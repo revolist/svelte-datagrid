@@ -88,6 +88,38 @@ With Yarn:
 yarn add @revolist/svelte-datagrid;
 ```
 
+
+[Demo sandbox](https://codesandbox.io/s/revogrid-svelte-d3zhi?file=/Grid.svelte)
+```svelte
+<script>
+import {RevoGrid} from '../dist/revogrid';
+import {defineCustomElements} from '@revolist/revogrid/loader';
+
+let source;
+let headers;
+
+// define webcomponent element in DOM
+defineCustomElements().then(() => {
+  // then apply data or rerender
+  source = [{
+      prop: "name",
+      name: "First",
+    },
+    {
+      prop: "details",
+      name: "Second",
+  }];
+  headers = [{
+    name: "1",
+    details: "Item 1",
+  }];
+});
+</script>
+
+
+<RevoGrid source={source} resize="true" columns={headers} theme="material"/>
+```
+
 ## Contributing
 
 If you have any idea, feel free to open an issue to discuss a new feature and submit your changes back to me.
