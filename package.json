@@ -2,12 +2,37 @@
   "name": "@revolist/svelte-datagrid",
   "description": "Svelte data grid spreadsheet",
   "version": "1.0.0",
+  "main": "dist/revogrid.js",
   "scripts": {
     "build:svelte": "rollup -c",
     "build": "tsc",
     "serve": "rollup -c -w",
     "start": "sirv public"
   },
+  "keywords": [
+    "spreadsheet",
+    "svelte",
+    "datagrid",
+    "revogrid",
+    "excel",
+    "js",
+    "gridjs",
+    "virtual",
+    "virtual grid",
+    "datalist",
+    "rangeedit",
+    "grouping"
+  ],
+  "author": "revolist",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revolist/svelte-datagrid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/revolist/svelte-datagrid/issues"
+  },
+  "homepage": "https://github.com/revolist/svelte-datagrid#readme",
+  "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
