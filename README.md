@@ -90,9 +90,9 @@ yarn add @revolist/svelte-datagrid;
 
 
 [Demo sandbox](https://codesandbox.io/s/revogrid-svelte-d3zhi?file=/Grid.svelte)
-```svelte
+```vue
 <script>
-import {RevoGrid} from '../dist/revogrid';
+import {RevoGrid} from '@revolist/svelte-datagrid';
 import {defineCustomElements} from '@revolist/revogrid/loader';
 
 let source;
