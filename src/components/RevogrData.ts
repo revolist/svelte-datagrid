@@ -19,9 +19,6 @@ interface RevogrDataProps {
   rowClass?: Components.RevogrData["rowClass"]
   
   /**  */
-  colData?: Components.RevogrData["colData"]
-  
-  /**  */
   rowSelectionStore?: Components.RevogrData["rowSelectionStore"]
   
   /**  */
@@ -34,6 +31,9 @@ interface RevogrDataProps {
   dimensionRow?: Components.RevogrData["dimensionRow"]
   
   /** Static stores, not expected to change during component lifetime */
+  colData?: Components.RevogrData["colData"]
+  
+  /**  */
   dataStore?: Components.RevogrData["dataStore"]
 }
 
@@ -149,11 +149,11 @@ function instance($$self, $$props, $$invalidate) {
 	let { range = undefined } = $$props;
 	let { canDrag = undefined } = $$props;
 	let { rowClass = undefined } = $$props;
-	let { colData = undefined } = $$props;
 	let { rowSelectionStore = undefined } = $$props;
 	let { viewportRow = undefined } = $$props;
 	let { viewportCol = undefined } = $$props;
 	let { dimensionRow = undefined } = $$props;
+	let { colData = undefined } = $$props;
 	let { dataStore = undefined } = $$props;
 	const getWebComponent = () => __ref;
 
@@ -182,34 +182,34 @@ function instance($$self, $$props, $$invalidate) {
 		if ("range" in $$props) $$invalidate(1, range = $$props.range);
 		if ("canDrag" in $$props) $$invalidate(2, canDrag = $$props.canDrag);
 		if ("rowClass" in $$props) $$invalidate(3, rowClass = $$props.rowClass);
-		if ("colData" in $$props) $$invalidate(6, colData = $$props.colData);
-		if ("rowSelectionStore" in $$props) $$invalidate(7, rowSelectionStore = $$props.rowSelectionStore);
-		if ("viewportRow" in $$props) $$invalidate(8, viewportRow = $$props.viewportRow);
-		if ("viewportCol" in $$props) $$invalidate(9, viewportCol = $$props.viewportCol);
-		if ("dimensionRow" in $$props) $$invalidate(10, dimensionRow = $$props.dimensionRow);
+		if ("rowSelectionStore" in $$props) $$invalidate(6, rowSelectionStore = $$props.rowSelectionStore);
+		if ("viewportRow" in $$props) $$invalidate(7, viewportRow = $$props.viewportRow);
+		if ("viewportCol" in $$props) $$invalidate(8, viewportCol = $$props.viewportCol);
+		if ("dimensionRow" in $$props) $$invalidate(9, dimensionRow = $$props.dimensionRow);
+		if ("colData" in $$props) $$invalidate(10, colData = $$props.colData);
 		if ("dataStore" in $$props) $$invalidate(11, dataStore = $$props.dataStore);
 		if ("$$scope" in $$props) $$invalidate(14, $$scope = $$props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*__mounted, colData*/ 8256) {
-			$: if (__mounted) setProp("colData", colData);
-		}
-
-		if ($$self.$$.dirty & /*__mounted, rowSelectionStore*/ 8320) {
+		if ($$self.$$.dirty & /*__mounted, rowSelectionStore*/ 8256) {
 			$: if (__mounted) setProp("rowSelectionStore", rowSelectionStore);
 		}
 
-		if ($$self.$$.dirty & /*__mounted, viewportRow*/ 8448) {
+		if ($$self.$$.dirty & /*__mounted, viewportRow*/ 8320) {
 			$: if (__mounted) setProp("viewportRow", viewportRow);
 		}
 
-		if ($$self.$$.dirty & /*__mounted, viewportCol*/ 8704) {
+		if ($$self.$$.dirty & /*__mounted, viewportCol*/ 8448) {
 			$: if (__mounted) setProp("viewportCol", viewportCol);
 		}
 
-		if ($$self.$$.dirty & /*__mounted, dimensionRow*/ 9216) {
+		if ($$self.$$.dirty & /*__mounted, dimensionRow*/ 8704) {
 			$: if (__mounted) setProp("dimensionRow", dimensionRow);
+		}
+
+		if ($$self.$$.dirty & /*__mounted, colData*/ 9216) {
+			$: if (__mounted) setProp("colData", colData);
 		}
 
 		if ($$self.$$.dirty & /*__mounted, dataStore*/ 10240) {
@@ -224,11 +224,11 @@ function instance($$self, $$props, $$invalidate) {
 		rowClass,
 		__ref,
 		onEvent,
-		colData,
 		rowSelectionStore,
 		viewportRow,
 		viewportCol,
 		dimensionRow,
+		colData,
 		dataStore,
 		getWebComponent,
 		__mounted,
@@ -259,11 +259,11 @@ class RevogrData extends SvelteComponent {
 			range: 1,
 			canDrag: 2,
 			rowClass: 3,
-			colData: 6,
-			rowSelectionStore: 7,
-			viewportRow: 8,
-			viewportCol: 9,
-			dimensionRow: 10,
+			rowSelectionStore: 6,
+			viewportRow: 7,
+			viewportCol: 8,
+			dimensionRow: 9,
+			colData: 10,
 			dataStore: 11,
 			getWebComponent: 12
 		});
