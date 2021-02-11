@@ -104,6 +104,8 @@ const onEvent = (e) => {
   on:afterColumnsSet={onEvent}
   on:beforeFilterApply={onEvent}
   on:beforeFilterTrimmed={onEvent}
+  on:beforeTrimmed={onEvent}
+  on:afterTrimmed={onEvent}
   on:viewportScroll={onEvent}
   on:beforeExport={onEvent}
   on:beforeEditStart={onEvent}

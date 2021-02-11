@@ -99,7 +99,7 @@ interface RevoGridEvents {
   
   /** Before edit event.
 Triggered before edit data applied.
-Use e.preventDefault() to prevent edit data set and use you own. 
+Use e.preventDefault() to prevent edit data set and use you own.
 Use e.val = {your value} to replace edit result with your own. */
   beforeEdit: Parameters<JSX.RevoGrid["onBeforeEdit"]>[0]
   
@@ -141,7 +141,7 @@ Use e.preventDefault() to prevent sorting. */
   beforeSorting: Parameters<JSX.RevoGrid["onBeforeSorting"]>[0]
   
   /** Row order change started.
-Use e.preventDefault() to prevent row order change. 
+Use e.preventDefault() to prevent row order change.
 Use e.text = 'new name' to change item name on start. */
   rowDragStart: Parameters<JSX.RevoGrid["onRowDragStart"]>[0]
   
@@ -175,6 +175,14 @@ Use e.preventDefault() to prevent value trimming and filter apply
 Update @collection if you wish to change filters
 Update @itemsToFilter if you wish to filter indexes of trimming */
   beforeFilterTrimmed: Parameters<JSX.RevoGrid["onBeforeFilterTrimmed"]>[0]
+  
+  /** Before trimmed values
+Use e.preventDefault() to prevent value trimming
+Update @trimmed if you wish to filter indexes of trimming */
+  beforeTrimmed: Parameters<JSX.RevoGrid["onBeforeTrimmed"]>[0]
+  
+  /** Notify trimmed applied */
+  afterTrimmed: Parameters<JSX.RevoGrid["onAfterTrimmed"]>[0]
   
   /** Triggered when view port scrolled */
   viewportScroll: Parameters<JSX.RevoGrid["onViewportScroll"]>[0]
@@ -269,6 +277,8 @@ function create_fragment(ctx) {
 					listen(revo_grid, "afterColumnsSet", /*onEvent*/ ctx[14]),
 					listen(revo_grid, "beforeFilterApply", /*onEvent*/ ctx[14]),
 					listen(revo_grid, "beforeFilterTrimmed", /*onEvent*/ ctx[14]),
+					listen(revo_grid, "beforeTrimmed", /*onEvent*/ ctx[14]),
+					listen(revo_grid, "afterTrimmed", /*onEvent*/ ctx[14]),
 					listen(revo_grid, "viewportScroll", /*onEvent*/ ctx[14]),
 					listen(revo_grid, "beforeExport", /*onEvent*/ ctx[14]),
 					listen(revo_grid, "beforeEditStart", /*onEvent*/ ctx[14])
