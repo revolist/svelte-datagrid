@@ -1,7 +1,7 @@
 {
   "name": "@revolist/svelte-datagrid",
   "description": "Svelte data grid spreadsheet",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/revogrid.js",
   "scripts": {
     "build": "tsc",
@@ -44,6 +44,6 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "@revolist/revogrid": "^2.9.3"
+    "@revolist/revogrid": "^2.9.4"
   }
 }
