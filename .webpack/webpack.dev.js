@@ -10,7 +10,8 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			svelte: path.dirname(require.resolve('svelte/package.json'))
+			svelte: path.dirname(require.resolve('svelte/package.json')),
+      		'@revolist/svelte-datagrid"': path.resolve(__dirname, './dist/index')
 		},
 		extensions: ['.mjs', '.js', '.svelte'],
 		mainFields: ['svelte', 'browser', 'module', 'main']

@@ -6,10 +6,10 @@ import { Components, JSX } from '@revolist/revogrid';
 
 interface RevogrViewportScrollProps {
   
-  /**  */
+  /** Width of inner content */
   contentWidth?: Components.RevogrViewportScroll["contentWidth"]
   
-  /**  */
+  /** Height of inner content */
   contentHeight?: Components.RevogrViewportScroll["contentHeight"]
 }
 
@@ -197,7 +197,7 @@ class RevogrViewportScroll extends SvelteComponent {
 	}
 
 	
-  /**  */
+  /** update on delta in case we don't know existing position or external change */
  get changeScroll(): Components.RevogrViewportScroll["changeScroll"] {
 		return this.$$.ctx[5];
 	}

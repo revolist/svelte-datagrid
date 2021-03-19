@@ -10,6 +10,7 @@ const dispatch = createEventDispatcher();
 export let readonly = undefined;
 export let range = undefined;
 export let canDrag = undefined;
+export let useClipboard = undefined;
 export let selectionStore = undefined;
 export let dimensionRow = undefined;
 export let dimensionCol = undefined;
@@ -44,6 +45,7 @@ const onEvent = (e) => {
   readonly={readonly}
   range={range}
   can-drag={canDrag}
+  use-clipboard={useClipboard}
   on:internalCopy={onEvent}
   on:internalPaste={onEvent}
   on:internalCellEdit={onEvent}
@@ -52,7 +54,6 @@ const onEvent = (e) => {
   on:setRange={onEvent}
   on:setTempRange={onEvent}
   on:focusCell={onEvent}
-  on:unregister={onEvent}
   on:internalSelectionChanged={onEvent}
   on:internalRangeDataApply={onEvent}
   bind:this={__ref}

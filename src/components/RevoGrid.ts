@@ -6,13 +6,13 @@ import { Components, JSX } from '@revolist/revogrid';
 
 interface RevoGridProps {
   
-  /** Excel like show row indexe per row */
+  /** Excel like show rgRow indexe per rgRow */
   rowHeaders?: Components.RevoGrid["rowHeaders"]
   
   /** Defines how many rows/columns should be rendered outside visible area. */
   frameSize?: Components.RevoGrid["frameSize"]
   
-  /** Indicates default row size.
+  /** Indicates default rgRow size.
 By default 0, means theme package size will be applied */
   rowSize?: Components.RevoGrid["rowSize"]
   
@@ -30,6 +30,9 @@ By default 0, means theme package size will be applied */
   
   /** When true cell focus appear. */
   canFocus?: Components.RevoGrid["canFocus"]
+  
+  /** When true enable clipboard. */
+  useClipboard?: Components.RevoGrid["useClipboard"]
   
   /** Columns - defines an array of grid columns.
 Can be column or grouped column. */
@@ -66,7 +69,7 @@ Types will be merged but can be replaced with column properties */
   theme?: Components.RevoGrid["theme"]
   
   /** Row class property
-Define this property in row object and this will be mapped as row class */
+Define this property in rgRow object and this will be mapped as rgRow class */
   rowClass?: Components.RevoGrid["rowClass"]
   
   /** Autosize config
@@ -101,100 +104,104 @@ interface RevoGridEvents {
 Triggered before edit data applied.
 Use e.preventDefault() to prevent edit data set and use you own.
 Use e.val = {your value} to replace edit result with your own. */
-  beforeEdit: Parameters<JSX.RevoGrid["onBeforeEdit"]>[0]
+  beforeedit: Parameters<JSX.RevoGrid["onBeforeedit"]>[0]
   
   /** Before range edit event.
 Triggered before range data applied, when range selection happened.
 Use e.preventDefault() to prevent edit data set and use you own. */
-  beforeRangeEdit: Parameters<JSX.RevoGrid["onBeforeRangeEdit"]>[0]
+  beforerangeedit: Parameters<JSX.RevoGrid["onBeforerangeedit"]>[0]
   
   /** After edit.
 Triggered when after data applied or Range changeged. */
-  afterEdit: Parameters<JSX.RevoGrid["onAfterEdit"]>[0]
+  afteredit: Parameters<JSX.RevoGrid["onAfteredit"]>[0]
   
   /** Before autofill.
 Triggered before autofill applied.
 Use e.preventDefault() to prevent edit data apply. */
-  beforeAutofill: Parameters<JSX.RevoGrid["onBeforeAutofill"]>[0]
+  beforeautofill: Parameters<JSX.RevoGrid["onBeforeautofill"]>[0]
   
   /** Before range apply.
 Triggered before range applied.
 Use e.preventDefault() to prevent range. */
-  beforeRange: Parameters<JSX.RevoGrid["onBeforeRange"]>[0]
+  beforeaange: Parameters<JSX.RevoGrid["onBeforeaange"]>[0]
   
-  /** Before row order apply.
-Use e.preventDefault() to prevent row order change. */
-  rowOrderChanged: Parameters<JSX.RevoGrid["onRowOrderChanged"]>[0]
+  /** Before rgRow order apply.
+Use e.preventDefault() to prevent rgRow order change. */
+  roworderchanged: Parameters<JSX.RevoGrid["onRoworderchanged"]>[0]
   
   /** Before source update sorting apply.
 Use this event if you intended to prevent sorting on data update.
 Use e.preventDefault() to prevent sorting data change during rows source update. */
-  beforeSourceSortingApply: Parameters<JSX.RevoGrid["onBeforeSourceSortingApply"]>[0]
+  beforesourcesortingapply: Parameters<JSX.RevoGrid["onBeforesourcesortingapply"]>[0]
   
   /** Before sorting apply.
 Use e.preventDefault() to prevent sorting data change. */
-  beforeSortingApply: Parameters<JSX.RevoGrid["onBeforeSortingApply"]>[0]
+  beforesortingapply: Parameters<JSX.RevoGrid["onBeforesortingapply"]>[0]
   
   /** Before sorting event.
 Initial sorting triggered, if this event stops no other event called.
 Use e.preventDefault() to prevent sorting. */
-  beforeSorting: Parameters<JSX.RevoGrid["onBeforeSorting"]>[0]
+  beforesorting: Parameters<JSX.RevoGrid["onBeforesorting"]>[0]
   
   /** Row order change started.
-Use e.preventDefault() to prevent row order change.
+Use e.preventDefault() to prevent rgRow order change.
 Use e.text = 'new name' to change item name on start. */
-  rowDragStart: Parameters<JSX.RevoGrid["onRowDragStart"]>[0]
+  rowdragstart: Parameters<JSX.RevoGrid["onRowdragstart"]>[0]
   
   /** On header click. */
-  headerClick: Parameters<JSX.RevoGrid["onHeaderClick"]>[0]
+  headerclick: Parameters<JSX.RevoGrid["onHeaderclick"]>[0]
   
   /** Before cell focus changed.
 Use e.preventDefault() to prevent cell focus change. */
-  beforeCellFocus: Parameters<JSX.RevoGrid["onBeforeCellFocus"]>[0]
+  beforecellfocus: Parameters<JSX.RevoGrid["onBeforecellfocus"]>[0]
+  
+  /** Before grid focus lost happened.
+Use e.preventDefault() to prevent cell focus change. */
+  beforefocuslost: Parameters<JSX.RevoGrid["onBeforefocuslost"]>[0]
   
   /** Before data apply.
 You can override data source here */
-  beforeSourceSet: Parameters<JSX.RevoGrid["onBeforeSourceSet"]>[0]
+  beforesourceset: Parameters<JSX.RevoGrid["onBeforesourceset"]>[0]
   
   /** After rows updated */
-  afterSourceSet: Parameters<JSX.RevoGrid["onAfterSourceSet"]>[0]
+  aftersourceset: Parameters<JSX.RevoGrid["onAftersourceset"]>[0]
   
   /** Before column update */
-  beforeColumnsSet: Parameters<JSX.RevoGrid["onBeforeColumnsSet"]>[0]
+  beforecolumnsset: Parameters<JSX.RevoGrid["onBeforecolumnsset"]>[0]
   
   /** Column updated */
-  afterColumnsSet: Parameters<JSX.RevoGrid["onAfterColumnsSet"]>[0]
+  aftercolumnsset: Parameters<JSX.RevoGrid["onAftercolumnsset"]>[0]
   
   /** Before filter applied to data source
 Use e.preventDefault() to prevent cell focus change
 Update @collection if you wish to change filters */
-  beforeFilterApply: Parameters<JSX.RevoGrid["onBeforeFilterApply"]>[0]
+  beforefilterapply: Parameters<JSX.RevoGrid["onBeforefilterapply"]>[0]
   
   /** Before filter trimmed values
 Use e.preventDefault() to prevent value trimming and filter apply
 Update @collection if you wish to change filters
 Update @itemsToFilter if you wish to filter indexes of trimming */
-  beforeFilterTrimmed: Parameters<JSX.RevoGrid["onBeforeFilterTrimmed"]>[0]
+  beforefiltertrimmed: Parameters<JSX.RevoGrid["onBeforefiltertrimmed"]>[0]
   
   /** Before trimmed values
 Use e.preventDefault() to prevent value trimming
 Update @trimmed if you wish to filter indexes of trimming */
-  beforeTrimmed: Parameters<JSX.RevoGrid["onBeforeTrimmed"]>[0]
+  beforetrimmed: Parameters<JSX.RevoGrid["onBeforetrimmed"]>[0]
   
   /** Notify trimmed applied */
-  afterTrimmed: Parameters<JSX.RevoGrid["onAfterTrimmed"]>[0]
+  aftertrimmed: Parameters<JSX.RevoGrid["onAftertrimmed"]>[0]
   
   /** Triggered when view port scrolled */
-  viewportScroll: Parameters<JSX.RevoGrid["onViewportScroll"]>[0]
+  viewportscroll: Parameters<JSX.RevoGrid["onViewportscroll"]>[0]
   
   /** Before export
 Use e.preventDefault() to prevent export
 Replace data in Event in case you want to modify it in export */
-  beforeExport: Parameters<JSX.RevoGrid["onBeforeExport"]>[0]
+  beforeexport: Parameters<JSX.RevoGrid["onBeforeexport"]>[0]
   
   /** Before edit started
 Use e.preventDefault() to prevent edit */
-  beforeEditStart: Parameters<JSX.RevoGrid["onBeforeEditStart"]>[0]
+  beforeeditstart: Parameters<JSX.RevoGrid["onBeforeeditstart"]>[0]
 }
 
 interface RevoGridSlots {
@@ -226,8 +233,8 @@ function create_fragment(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[45].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[44], null);
+	const default_slot_template = /*#slots*/ ctx[47].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[46], null);
 
 	return {
 		c() {
@@ -241,11 +248,12 @@ function create_fragment(ctx) {
 			set_custom_element_data(revo_grid, "readonly", /*readonly*/ ctx[5]);
 			set_custom_element_data(revo_grid, "resize", /*resize*/ ctx[6]);
 			set_custom_element_data(revo_grid, "can-focus", /*canFocus*/ ctx[7]);
-			set_custom_element_data(revo_grid, "theme", /*theme*/ ctx[8]);
-			set_custom_element_data(revo_grid, "row-class", /*rowClass*/ ctx[9]);
-			set_custom_element_data(revo_grid, "auto-size-column", /*autoSizeColumn*/ ctx[10]);
-			set_custom_element_data(revo_grid, "filter", /*filter*/ ctx[11]);
-			set_custom_element_data(revo_grid, "exporting", /*exporting*/ ctx[12]);
+			set_custom_element_data(revo_grid, "use-clipboard", /*useClipboard*/ ctx[8]);
+			set_custom_element_data(revo_grid, "theme", /*theme*/ ctx[9]);
+			set_custom_element_data(revo_grid, "row-class", /*rowClass*/ ctx[10]);
+			set_custom_element_data(revo_grid, "auto-size-column", /*autoSizeColumn*/ ctx[11]);
+			set_custom_element_data(revo_grid, "filter", /*filter*/ ctx[12]);
+			set_custom_element_data(revo_grid, "exporting", /*exporting*/ ctx[13]);
 		},
 		m(target, anchor) {
 			insert(target, revo_grid, anchor);
@@ -254,34 +262,35 @@ function create_fragment(ctx) {
 				default_slot.m(revo_grid, null);
 			}
 
-			/*revo_grid_binding*/ ctx[46](revo_grid);
+			/*revo_grid_binding*/ ctx[48](revo_grid);
 			current = true;
 
 			if (!mounted) {
 				dispose = [
-					listen(revo_grid, "beforeEdit", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeRangeEdit", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "afterEdit", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeAutofill", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeRange", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "rowOrderChanged", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeSourceSortingApply", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeSortingApply", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeSorting", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "rowDragStart", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "headerClick", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeCellFocus", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeSourceSet", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "afterSourceSet", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeColumnsSet", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "afterColumnsSet", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeFilterApply", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeFilterTrimmed", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeTrimmed", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "afterTrimmed", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "viewportScroll", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeExport", /*onEvent*/ ctx[14]),
-					listen(revo_grid, "beforeEditStart", /*onEvent*/ ctx[14])
+					listen(revo_grid, "beforeedit", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforerangeedit", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "afteredit", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforeautofill", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforeaange", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "roworderchanged", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforesourcesortingapply", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforesortingapply", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforesorting", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "rowdragstart", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "headerclick", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforecellfocus", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforefocuslost", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforesourceset", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "aftersourceset", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforecolumnsset", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "aftercolumnsset", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforefilterapply", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforefiltertrimmed", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforetrimmed", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "aftertrimmed", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "viewportscroll", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforeexport", /*onEvent*/ ctx[15]),
+					listen(revo_grid, "beforeeditstart", /*onEvent*/ ctx[15])
 				];
 
 				mounted = true;
@@ -289,8 +298,8 @@ function create_fragment(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && dirty[1] & /*$$scope*/ 8192) {
-					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[44], dirty, null, null);
+				if (default_slot.p && dirty[1] & /*$$scope*/ 32768) {
+					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[46], dirty, null, null);
 				}
 			}
 
@@ -326,24 +335,28 @@ function create_fragment(ctx) {
 				set_custom_element_data(revo_grid, "can-focus", /*canFocus*/ ctx[7]);
 			}
 
-			if (!current || dirty[0] & /*theme*/ 256) {
-				set_custom_element_data(revo_grid, "theme", /*theme*/ ctx[8]);
+			if (!current || dirty[0] & /*useClipboard*/ 256) {
+				set_custom_element_data(revo_grid, "use-clipboard", /*useClipboard*/ ctx[8]);
 			}
 
-			if (!current || dirty[0] & /*rowClass*/ 512) {
-				set_custom_element_data(revo_grid, "row-class", /*rowClass*/ ctx[9]);
+			if (!current || dirty[0] & /*theme*/ 512) {
+				set_custom_element_data(revo_grid, "theme", /*theme*/ ctx[9]);
 			}
 
-			if (!current || dirty[0] & /*autoSizeColumn*/ 1024) {
-				set_custom_element_data(revo_grid, "auto-size-column", /*autoSizeColumn*/ ctx[10]);
+			if (!current || dirty[0] & /*rowClass*/ 1024) {
+				set_custom_element_data(revo_grid, "row-class", /*rowClass*/ ctx[10]);
 			}
 
-			if (!current || dirty[0] & /*filter*/ 2048) {
-				set_custom_element_data(revo_grid, "filter", /*filter*/ ctx[11]);
+			if (!current || dirty[0] & /*autoSizeColumn*/ 2048) {
+				set_custom_element_data(revo_grid, "auto-size-column", /*autoSizeColumn*/ ctx[11]);
 			}
 
-			if (!current || dirty[0] & /*exporting*/ 4096) {
-				set_custom_element_data(revo_grid, "exporting", /*exporting*/ ctx[12]);
+			if (!current || dirty[0] & /*filter*/ 4096) {
+				set_custom_element_data(revo_grid, "filter", /*filter*/ ctx[12]);
+			}
+
+			if (!current || dirty[0] & /*exporting*/ 8192) {
+				set_custom_element_data(revo_grid, "exporting", /*exporting*/ ctx[13]);
 			}
 		},
 		i(local) {
@@ -358,7 +371,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(revo_grid);
 			if (default_slot) default_slot.d(detaching);
-			/*revo_grid_binding*/ ctx[46](null);
+			/*revo_grid_binding*/ ctx[48](null);
 			mounted = false;
 			run_all(dispose);
 		}
@@ -378,6 +391,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { readonly = undefined } = $$props;
 	let { resize = undefined } = $$props;
 	let { canFocus = undefined } = $$props;
+	let { useClipboard = undefined } = $$props;
 	let { columns = undefined } = $$props;
 	let { source = undefined } = $$props;
 	let { pinnedTopSource = undefined } = $$props;
@@ -410,14 +424,15 @@ function instance($$self, $$props, $$invalidate) {
 	const getColumns = (...args) => __ref.getColumns(...args);
 	const clearFocus = (...args) => __ref.clearFocus(...args);
 	const getPlugins = (...args) => __ref.getPlugins(...args);
+	const getFocused = (...args) => __ref.getFocused(...args);
 	const getWebComponent = () => __ref;
 
 	onMount(() => {
-		$$invalidate(43, __mounted = true);
+		$$invalidate(45, __mounted = true);
 	});
 
 	const setProp = (prop, value) => {
-		if (__ref) $$invalidate(13, __ref[prop] = value, __ref);
+		if (__ref) $$invalidate(14, __ref[prop] = value, __ref);
 	};
 
 	const onEvent = e => {
@@ -428,7 +443,7 @@ function instance($$self, $$props, $$invalidate) {
 	function revo_grid_binding($$value) {
 		binding_callbacks[$$value ? "unshift" : "push"](() => {
 			__ref = $$value;
-			$$invalidate(13, __ref);
+			$$invalidate(14, __ref);
 		});
 	}
 
@@ -441,62 +456,63 @@ function instance($$self, $$props, $$invalidate) {
 		if ("readonly" in $$props) $$invalidate(5, readonly = $$props.readonly);
 		if ("resize" in $$props) $$invalidate(6, resize = $$props.resize);
 		if ("canFocus" in $$props) $$invalidate(7, canFocus = $$props.canFocus);
-		if ("columns" in $$props) $$invalidate(15, columns = $$props.columns);
-		if ("source" in $$props) $$invalidate(16, source = $$props.source);
-		if ("pinnedTopSource" in $$props) $$invalidate(17, pinnedTopSource = $$props.pinnedTopSource);
-		if ("pinnedBottomSource" in $$props) $$invalidate(18, pinnedBottomSource = $$props.pinnedBottomSource);
-		if ("rowDefinitions" in $$props) $$invalidate(19, rowDefinitions = $$props.rowDefinitions);
-		if ("editors" in $$props) $$invalidate(20, editors = $$props.editors);
-		if ("plugins" in $$props) $$invalidate(21, plugins = $$props.plugins);
-		if ("columnTypes" in $$props) $$invalidate(22, columnTypes = $$props.columnTypes);
-		if ("theme" in $$props) $$invalidate(8, theme = $$props.theme);
-		if ("rowClass" in $$props) $$invalidate(9, rowClass = $$props.rowClass);
-		if ("autoSizeColumn" in $$props) $$invalidate(10, autoSizeColumn = $$props.autoSizeColumn);
-		if ("filter" in $$props) $$invalidate(11, filter = $$props.filter);
-		if ("trimmedRows" in $$props) $$invalidate(23, trimmedRows = $$props.trimmedRows);
-		if ("exporting" in $$props) $$invalidate(12, exporting = $$props.exporting);
-		if ("grouping" in $$props) $$invalidate(24, grouping = $$props.grouping);
-		if ("$$scope" in $$props) $$invalidate(44, $$scope = $$props.$$scope);
+		if ("useClipboard" in $$props) $$invalidate(8, useClipboard = $$props.useClipboard);
+		if ("columns" in $$props) $$invalidate(16, columns = $$props.columns);
+		if ("source" in $$props) $$invalidate(17, source = $$props.source);
+		if ("pinnedTopSource" in $$props) $$invalidate(18, pinnedTopSource = $$props.pinnedTopSource);
+		if ("pinnedBottomSource" in $$props) $$invalidate(19, pinnedBottomSource = $$props.pinnedBottomSource);
+		if ("rowDefinitions" in $$props) $$invalidate(20, rowDefinitions = $$props.rowDefinitions);
+		if ("editors" in $$props) $$invalidate(21, editors = $$props.editors);
+		if ("plugins" in $$props) $$invalidate(22, plugins = $$props.plugins);
+		if ("columnTypes" in $$props) $$invalidate(23, columnTypes = $$props.columnTypes);
+		if ("theme" in $$props) $$invalidate(9, theme = $$props.theme);
+		if ("rowClass" in $$props) $$invalidate(10, rowClass = $$props.rowClass);
+		if ("autoSizeColumn" in $$props) $$invalidate(11, autoSizeColumn = $$props.autoSizeColumn);
+		if ("filter" in $$props) $$invalidate(12, filter = $$props.filter);
+		if ("trimmedRows" in $$props) $$invalidate(24, trimmedRows = $$props.trimmedRows);
+		if ("exporting" in $$props) $$invalidate(13, exporting = $$props.exporting);
+		if ("grouping" in $$props) $$invalidate(25, grouping = $$props.grouping);
+		if ("$$scope" in $$props) $$invalidate(46, $$scope = $$props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty[0] & /*columns*/ 32768 | $$self.$$.dirty[1] & /*__mounted*/ 4096) {
+		if ($$self.$$.dirty[0] & /*columns*/ 65536 | $$self.$$.dirty[1] & /*__mounted*/ 16384) {
 			$: if (__mounted) setProp("columns", columns);
 		}
 
-		if ($$self.$$.dirty[0] & /*source*/ 65536 | $$self.$$.dirty[1] & /*__mounted*/ 4096) {
+		if ($$self.$$.dirty[0] & /*source*/ 131072 | $$self.$$.dirty[1] & /*__mounted*/ 16384) {
 			$: if (__mounted) setProp("source", source);
 		}
 
-		if ($$self.$$.dirty[0] & /*pinnedTopSource*/ 131072 | $$self.$$.dirty[1] & /*__mounted*/ 4096) {
+		if ($$self.$$.dirty[0] & /*pinnedTopSource*/ 262144 | $$self.$$.dirty[1] & /*__mounted*/ 16384) {
 			$: if (__mounted) setProp("pinnedTopSource", pinnedTopSource);
 		}
 
-		if ($$self.$$.dirty[0] & /*pinnedBottomSource*/ 262144 | $$self.$$.dirty[1] & /*__mounted*/ 4096) {
+		if ($$self.$$.dirty[0] & /*pinnedBottomSource*/ 524288 | $$self.$$.dirty[1] & /*__mounted*/ 16384) {
 			$: if (__mounted) setProp("pinnedBottomSource", pinnedBottomSource);
 		}
 
-		if ($$self.$$.dirty[0] & /*rowDefinitions*/ 524288 | $$self.$$.dirty[1] & /*__mounted*/ 4096) {
+		if ($$self.$$.dirty[0] & /*rowDefinitions*/ 1048576 | $$self.$$.dirty[1] & /*__mounted*/ 16384) {
 			$: if (__mounted) setProp("rowDefinitions", rowDefinitions);
 		}
 
-		if ($$self.$$.dirty[0] & /*editors*/ 1048576 | $$self.$$.dirty[1] & /*__mounted*/ 4096) {
+		if ($$self.$$.dirty[0] & /*editors*/ 2097152 | $$self.$$.dirty[1] & /*__mounted*/ 16384) {
 			$: if (__mounted) setProp("editors", editors);
 		}
 
-		if ($$self.$$.dirty[0] & /*plugins*/ 2097152 | $$self.$$.dirty[1] & /*__mounted*/ 4096) {
+		if ($$self.$$.dirty[0] & /*plugins*/ 4194304 | $$self.$$.dirty[1] & /*__mounted*/ 16384) {
 			$: if (__mounted) setProp("plugins", plugins);
 		}
 
-		if ($$self.$$.dirty[0] & /*columnTypes*/ 4194304 | $$self.$$.dirty[1] & /*__mounted*/ 4096) {
+		if ($$self.$$.dirty[0] & /*columnTypes*/ 8388608 | $$self.$$.dirty[1] & /*__mounted*/ 16384) {
 			$: if (__mounted) setProp("columnTypes", columnTypes);
 		}
 
-		if ($$self.$$.dirty[0] & /*trimmedRows*/ 8388608 | $$self.$$.dirty[1] & /*__mounted*/ 4096) {
+		if ($$self.$$.dirty[0] & /*trimmedRows*/ 16777216 | $$self.$$.dirty[1] & /*__mounted*/ 16384) {
 			$: if (__mounted) setProp("trimmedRows", trimmedRows);
 		}
 
-		if ($$self.$$.dirty[0] & /*grouping*/ 16777216 | $$self.$$.dirty[1] & /*__mounted*/ 4096) {
+		if ($$self.$$.dirty[0] & /*grouping*/ 33554432 | $$self.$$.dirty[1] & /*__mounted*/ 16384) {
 			$: if (__mounted) setProp("grouping", grouping);
 		}
 	};
@@ -510,6 +526,7 @@ function instance($$self, $$props, $$invalidate) {
 		readonly,
 		resize,
 		canFocus,
+		useClipboard,
 		theme,
 		rowClass,
 		autoSizeColumn,
@@ -544,6 +561,7 @@ function instance($$self, $$props, $$invalidate) {
 		getColumns,
 		clearFocus,
 		getPlugins,
+		getFocused,
 		getWebComponent,
 		__mounted,
 		$$scope,
@@ -583,39 +601,41 @@ class RevoGrid extends SvelteComponent {
 				readonly: 5,
 				resize: 6,
 				canFocus: 7,
-				columns: 15,
-				source: 16,
-				pinnedTopSource: 17,
-				pinnedBottomSource: 18,
-				rowDefinitions: 19,
-				editors: 20,
-				plugins: 21,
-				columnTypes: 22,
-				theme: 8,
-				rowClass: 9,
-				autoSizeColumn: 10,
-				filter: 11,
-				trimmedRows: 23,
-				exporting: 12,
-				grouping: 24,
-				refresh: 25,
-				scrollToRow: 26,
-				scrollToColumnIndex: 27,
-				scrollToColumnProp: 28,
-				updateColumns: 29,
-				addTrimmed: 30,
-				scrollToCoordinate: 31,
-				setCellEdit: 32,
-				registerVNode: 33,
-				getSource: 34,
-				getVisibleSource: 35,
-				getSourceStore: 36,
-				getColumnStore: 37,
-				updateColumnSorting: 38,
-				getColumns: 39,
-				clearFocus: 40,
-				getPlugins: 41,
-				getWebComponent: 42
+				useClipboard: 8,
+				columns: 16,
+				source: 17,
+				pinnedTopSource: 18,
+				pinnedBottomSource: 19,
+				rowDefinitions: 20,
+				editors: 21,
+				plugins: 22,
+				columnTypes: 23,
+				theme: 9,
+				rowClass: 10,
+				autoSizeColumn: 11,
+				filter: 12,
+				trimmedRows: 24,
+				exporting: 13,
+				grouping: 25,
+				refresh: 26,
+				scrollToRow: 27,
+				scrollToColumnIndex: 28,
+				scrollToColumnProp: 29,
+				updateColumns: 30,
+				addTrimmed: 31,
+				scrollToCoordinate: 32,
+				setCellEdit: 33,
+				registerVNode: 34,
+				getSource: 35,
+				getVisibleSource: 36,
+				getSourceStore: 37,
+				getColumnStore: 38,
+				updateColumnSorting: 39,
+				getColumns: 40,
+				clearFocus: 41,
+				getPlugins: 42,
+				getFocused: 43,
+				getWebComponent: 44
 			},
 			[-1, -1]
 		);
@@ -623,113 +643,119 @@ class RevoGrid extends SvelteComponent {
 
 	
   /** Refreshes data viewport.
-Can be specific part as row or pinned row or 'all' by default. */
+Can be specific part as rgRow or pinned rgRow or 'all' by default. */
  get refresh(): Components.RevoGrid["refresh"] {
-		return this.$$.ctx[25];
+		return this.$$.ctx[26];
 	}
 
 	
-  /** Scrolls view port to specified row index */
+  /** Scrolls view port to specified rgRow index */
  get scrollToRow(): Components.RevoGrid["scrollToRow"] {
-		return this.$$.ctx[26];
+		return this.$$.ctx[27];
 	}
 
 	
   /** Scrolls view port to specified column index */
  get scrollToColumnIndex(): Components.RevoGrid["scrollToColumnIndex"] {
-		return this.$$.ctx[27];
+		return this.$$.ctx[28];
 	}
 
 	
   /** Scrolls view port to specified column prop */
  get scrollToColumnProp(): Components.RevoGrid["scrollToColumnProp"] {
-		return this.$$.ctx[28];
+		return this.$$.ctx[29];
 	}
 
 	
   /** Update columns */
  get updateColumns(): Components.RevoGrid["updateColumns"] {
-		return this.$$.ctx[29];
+		return this.$$.ctx[30];
 	}
 
 	
   /** Add trimmed by type */
  get addTrimmed(): Components.RevoGrid["addTrimmed"] {
-		return this.$$.ctx[30];
+		return this.$$.ctx[31];
 	}
 
 	
   /** Scrolls view port to coordinate */
  get scrollToCoordinate(): Components.RevoGrid["scrollToCoordinate"] {
-		return this.$$.ctx[31];
+		return this.$$.ctx[32];
 	}
 
 	
   /** Bring cell to edit mode */
  get setCellEdit(): Components.RevoGrid["setCellEdit"] {
-		return this.$$.ctx[32];
+		return this.$$.ctx[33];
 	}
 
 	
   /** Register new virtual node inside of grid
 Used for additional items creation such as plugin elements */
  get registerVNode(): Components.RevoGrid["registerVNode"] {
-		return this.$$.ctx[33];
+		return this.$$.ctx[34];
 	}
 
 	
   /** Get data from source */
  get getSource(): Components.RevoGrid["getSource"] {
-		return this.$$.ctx[34];
+		return this.$$.ctx[35];
 	}
 
 	
   /** Get data from visible part of source
 Trimmed/filtered rows will be excluded */
  get getVisibleSource(): Components.RevoGrid["getVisibleSource"] {
-		return this.$$.ctx[35];
+		return this.$$.ctx[36];
 	}
 
 	
   /** Provides access to rows internal store observer
 Can be used for plugin support */
  get getSourceStore(): Components.RevoGrid["getSourceStore"] {
-		return this.$$.ctx[36];
+		return this.$$.ctx[37];
 	}
 
 	
   /** Provides access to column internal store observer
 Can be used for plugin support */
  get getColumnStore(): Components.RevoGrid["getColumnStore"] {
-		return this.$$.ctx[37];
+		return this.$$.ctx[38];
 	}
 
 	
   /** Update column sorting */
  get updateColumnSorting(): Components.RevoGrid["updateColumnSorting"] {
-		return this.$$.ctx[38];
+		return this.$$.ctx[39];
 	}
 
 	
   /** Receive all columns in data source */
  get getColumns(): Components.RevoGrid["getColumns"] {
-		return this.$$.ctx[39];
+		return this.$$.ctx[40];
 	}
 
 	
   /** Clear current grid focus */
  get clearFocus(): Components.RevoGrid["clearFocus"] {
-		return this.$$.ctx[40];
+		return this.$$.ctx[41];
 	}
 
 	
   /** Get all active plugins instances */
  get getPlugins(): Components.RevoGrid["getPlugins"] {
-		return this.$$.ctx[41];
+		return this.$$.ctx[42];
+	}
+
+	
+  /** Get all active plugins instances */
+ get getFocused(): Components.RevoGrid["getFocused"] {
+		return this.$$.ctx[43];
 	}
 
 	get getWebComponent(): HTMLRevoGridElement | undefined {
-		return this.$$.ctx[42];
+		return this.$$.ctx[44];
 	}
 }
 

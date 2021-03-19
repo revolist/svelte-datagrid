@@ -14,6 +14,7 @@ export let viewports = undefined;
 export let editors = undefined;
 export let rowClass = undefined;
 export let uuid = undefined;
+export let useClipboard = undefined;
 export let resize = undefined;
 export let readonly = undefined;
 export let range = undefined;
@@ -45,6 +46,7 @@ const onEvent = (e) => {
 <revogr-viewport 
   row-class={rowClass}
   uuid={uuid}
+  use-clipboard={useClipboard}
   resize={resize}
   readonly={readonly}
   range={range}

@@ -1,5 +1,5 @@
 <script>
-	import {RevoGrid} from '../dist/revogrid';
+	import {RevoGrid} from '../dist/index';
 	import {defineCustomElements} from '@revolist/revogrid/loader';
 	function generateHeader(index) {
 		const asciiFirstLetter = 65;

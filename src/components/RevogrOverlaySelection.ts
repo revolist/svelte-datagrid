@@ -15,6 +15,9 @@ interface RevogrOverlaySelectionProps {
   /**  */
   canDrag?: Components.RevogrOverlaySelection["canDrag"]
   
+  /**  */
+  useClipboard?: Components.RevogrOverlaySelection["useClipboard"]
+  
   /** Dynamic stores */
   selectionStore?: Components.RevogrOverlaySelection["selectionStore"]
   
@@ -63,9 +66,6 @@ interface RevogrOverlaySelectionEvents {
   /**  */
   focusCell: Parameters<JSX.RevogrOverlaySelection["onFocusCell"]>[0]
   
-  /**  */
-  unregister: Parameters<JSX.RevogrOverlaySelection["onUnregister"]>[0]
-  
   /** Selection range changed */
   internalSelectionChanged: Parameters<JSX.RevogrOverlaySelection["onInternalSelectionChanged"]>[0]
   
@@ -102,8 +102,8 @@ function create_fragment(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[15].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[14], null);
+	const default_slot_template = /*#slots*/ ctx[16].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[15], null);
 
 	return {
 		c() {
@@ -112,6 +112,7 @@ function create_fragment(ctx) {
 			set_custom_element_data(revogr_overlay_selection, "readonly", /*readonly*/ ctx[0]);
 			set_custom_element_data(revogr_overlay_selection, "range", /*range*/ ctx[1]);
 			set_custom_element_data(revogr_overlay_selection, "can-drag", /*canDrag*/ ctx[2]);
+			set_custom_element_data(revogr_overlay_selection, "use-clipboard", /*useClipboard*/ ctx[3]);
 		},
 		m(target, anchor) {
 			insert(target, revogr_overlay_selection, anchor);
@@ -120,22 +121,21 @@ function create_fragment(ctx) {
 				default_slot.m(revogr_overlay_selection, null);
 			}
 
-			/*revogr_overlay_selection_binding*/ ctx[16](revogr_overlay_selection);
+			/*revogr_overlay_selection_binding*/ ctx[17](revogr_overlay_selection);
 			current = true;
 
 			if (!mounted) {
 				dispose = [
-					listen(revogr_overlay_selection, "internalCopy", /*onEvent*/ ctx[4]),
-					listen(revogr_overlay_selection, "internalPaste", /*onEvent*/ ctx[4]),
-					listen(revogr_overlay_selection, "internalCellEdit", /*onEvent*/ ctx[4]),
-					listen(revogr_overlay_selection, "internalFocusCell", /*onEvent*/ ctx[4]),
-					listen(revogr_overlay_selection, "setEdit", /*onEvent*/ ctx[4]),
-					listen(revogr_overlay_selection, "setRange", /*onEvent*/ ctx[4]),
-					listen(revogr_overlay_selection, "setTempRange", /*onEvent*/ ctx[4]),
-					listen(revogr_overlay_selection, "focusCell", /*onEvent*/ ctx[4]),
-					listen(revogr_overlay_selection, "unregister", /*onEvent*/ ctx[4]),
-					listen(revogr_overlay_selection, "internalSelectionChanged", /*onEvent*/ ctx[4]),
-					listen(revogr_overlay_selection, "internalRangeDataApply", /*onEvent*/ ctx[4])
+					listen(revogr_overlay_selection, "internalCopy", /*onEvent*/ ctx[5]),
+					listen(revogr_overlay_selection, "internalPaste", /*onEvent*/ ctx[5]),
+					listen(revogr_overlay_selection, "internalCellEdit", /*onEvent*/ ctx[5]),
+					listen(revogr_overlay_selection, "internalFocusCell", /*onEvent*/ ctx[5]),
+					listen(revogr_overlay_selection, "setEdit", /*onEvent*/ ctx[5]),
+					listen(revogr_overlay_selection, "setRange", /*onEvent*/ ctx[5]),
+					listen(revogr_overlay_selection, "setTempRange", /*onEvent*/ ctx[5]),
+					listen(revogr_overlay_selection, "focusCell", /*onEvent*/ ctx[5]),
+					listen(revogr_overlay_selection, "internalSelectionChanged", /*onEvent*/ ctx[5]),
+					listen(revogr_overlay_selection, "internalRangeDataApply", /*onEvent*/ ctx[5])
 				];
 
 				mounted = true;
@@ -143,8 +143,8 @@ function create_fragment(ctx) {
 		},
 		p(ctx, [dirty]) {
 			if (default_slot) {
-				if (default_slot.p && dirty & /*$$scope*/ 16384) {
-					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[14], dirty, null, null);
+				if (default_slot.p && dirty & /*$$scope*/ 32768) {
+					update_slot(default_slot, default_slot_template, ctx, /*$$scope*/ ctx[15], dirty, null, null);
 				}
 			}
 
@@ -159,6 +159,10 @@ function create_fragment(ctx) {
 			if (!current || dirty & /*canDrag*/ 4) {
 				set_custom_element_data(revogr_overlay_selection, "can-drag", /*canDrag*/ ctx[2]);
 			}
+
+			if (!current || dirty & /*useClipboard*/ 8) {
+				set_custom_element_data(revogr_overlay_selection, "use-clipboard", /*useClipboard*/ ctx[3]);
+			}
 		},
 		i(local) {
 			if (current) return;
@@ -172,7 +176,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(revogr_overlay_selection);
 			if (default_slot) default_slot.d(detaching);
-			/*revogr_overlay_selection_binding*/ ctx[16](null);
+			/*revogr_overlay_selection_binding*/ ctx[17](null);
 			mounted = false;
 			run_all(dispose);
 		}
@@ -187,6 +191,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { readonly = undefined } = $$props;
 	let { range = undefined } = $$props;
 	let { canDrag = undefined } = $$props;
+	let { useClipboard = undefined } = $$props;
 	let { selectionStore = undefined } = $$props;
 	let { dimensionRow = undefined } = $$props;
 	let { dimensionCol = undefined } = $$props;
@@ -197,11 +202,11 @@ function instance($$self, $$props, $$invalidate) {
 	const getWebComponent = () => __ref;
 
 	onMount(() => {
-		$$invalidate(13, __mounted = true);
+		$$invalidate(14, __mounted = true);
 	});
 
 	const setProp = (prop, value) => {
-		if (__ref) $$invalidate(3, __ref[prop] = value, __ref);
+		if (__ref) $$invalidate(4, __ref[prop] = value, __ref);
 	};
 
 	const onEvent = e => {
@@ -212,7 +217,7 @@ function instance($$self, $$props, $$invalidate) {
 	function revogr_overlay_selection_binding($$value) {
 		binding_callbacks[$$value ? "unshift" : "push"](() => {
 			__ref = $$value;
-			$$invalidate(3, __ref);
+			$$invalidate(4, __ref);
 		});
 	}
 
@@ -220,42 +225,43 @@ function instance($$self, $$props, $$invalidate) {
 		if ("readonly" in $$props) $$invalidate(0, readonly = $$props.readonly);
 		if ("range" in $$props) $$invalidate(1, range = $$props.range);
 		if ("canDrag" in $$props) $$invalidate(2, canDrag = $$props.canDrag);
-		if ("selectionStore" in $$props) $$invalidate(5, selectionStore = $$props.selectionStore);
-		if ("dimensionRow" in $$props) $$invalidate(6, dimensionRow = $$props.dimensionRow);
-		if ("dimensionCol" in $$props) $$invalidate(7, dimensionCol = $$props.dimensionCol);
-		if ("dataStore" in $$props) $$invalidate(8, dataStore = $$props.dataStore);
-		if ("colData" in $$props) $$invalidate(9, colData = $$props.colData);
-		if ("lastCell" in $$props) $$invalidate(10, lastCell = $$props.lastCell);
-		if ("editors" in $$props) $$invalidate(11, editors = $$props.editors);
-		if ("$$scope" in $$props) $$invalidate(14, $$scope = $$props.$$scope);
+		if ("useClipboard" in $$props) $$invalidate(3, useClipboard = $$props.useClipboard);
+		if ("selectionStore" in $$props) $$invalidate(6, selectionStore = $$props.selectionStore);
+		if ("dimensionRow" in $$props) $$invalidate(7, dimensionRow = $$props.dimensionRow);
+		if ("dimensionCol" in $$props) $$invalidate(8, dimensionCol = $$props.dimensionCol);
+		if ("dataStore" in $$props) $$invalidate(9, dataStore = $$props.dataStore);
+		if ("colData" in $$props) $$invalidate(10, colData = $$props.colData);
+		if ("lastCell" in $$props) $$invalidate(11, lastCell = $$props.lastCell);
+		if ("editors" in $$props) $$invalidate(12, editors = $$props.editors);
+		if ("$$scope" in $$props) $$invalidate(15, $$scope = $$props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*__mounted, selectionStore*/ 8224) {
+		if ($$self.$$.dirty & /*__mounted, selectionStore*/ 16448) {
 			$: if (__mounted) setProp("selectionStore", selectionStore);
 		}
 
-		if ($$self.$$.dirty & /*__mounted, dimensionRow*/ 8256) {
+		if ($$self.$$.dirty & /*__mounted, dimensionRow*/ 16512) {
 			$: if (__mounted) setProp("dimensionRow", dimensionRow);
 		}
 
-		if ($$self.$$.dirty & /*__mounted, dimensionCol*/ 8320) {
+		if ($$self.$$.dirty & /*__mounted, dimensionCol*/ 16640) {
 			$: if (__mounted) setProp("dimensionCol", dimensionCol);
 		}
 
-		if ($$self.$$.dirty & /*__mounted, dataStore*/ 8448) {
+		if ($$self.$$.dirty & /*__mounted, dataStore*/ 16896) {
 			$: if (__mounted) setProp("dataStore", dataStore);
 		}
 
-		if ($$self.$$.dirty & /*__mounted, colData*/ 8704) {
+		if ($$self.$$.dirty & /*__mounted, colData*/ 17408) {
 			$: if (__mounted) setProp("colData", colData);
 		}
 
-		if ($$self.$$.dirty & /*__mounted, lastCell*/ 9216) {
+		if ($$self.$$.dirty & /*__mounted, lastCell*/ 18432) {
 			$: if (__mounted) setProp("lastCell", lastCell);
 		}
 
-		if ($$self.$$.dirty & /*__mounted, editors*/ 10240) {
+		if ($$self.$$.dirty & /*__mounted, editors*/ 20480) {
 			$: if (__mounted) setProp("editors", editors);
 		}
 	};
@@ -264,6 +270,7 @@ function instance($$self, $$props, $$invalidate) {
 		readonly,
 		range,
 		canDrag,
+		useClipboard,
 		__ref,
 		onEvent,
 		selectionStore,
@@ -301,19 +308,20 @@ class RevogrOverlaySelection extends SvelteComponent {
 			readonly: 0,
 			range: 1,
 			canDrag: 2,
-			selectionStore: 5,
-			dimensionRow: 6,
-			dimensionCol: 7,
-			dataStore: 8,
-			colData: 9,
-			lastCell: 10,
-			editors: 11,
-			getWebComponent: 12
+			useClipboard: 3,
+			selectionStore: 6,
+			dimensionRow: 7,
+			dimensionCol: 8,
+			dataStore: 9,
+			colData: 10,
+			lastCell: 11,
+			editors: 12,
+			getWebComponent: 13
 		});
 	}
 
 	get getWebComponent(): HTMLRevogrOverlaySelectionElement | undefined {
-		return this.$$.ctx[12];
+		return this.$$.ctx[13];
 	}
 }
 

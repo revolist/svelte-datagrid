@@ -15,6 +15,7 @@ export let range = undefined;
 export let readonly = undefined;
 export let resize = undefined;
 export let canFocus = undefined;
+export let useClipboard = undefined;
 export let columns = undefined;
 export let source = undefined;
 export let pinnedTopSource = undefined;
@@ -48,6 +49,7 @@ export const updateColumnSorting = (...args) => __ref.updateColumnSorting(...arg
 export const getColumns = (...args) => __ref.getColumns(...args);
 export const clearFocus = (...args) => __ref.clearFocus(...args);
 export const getPlugins = (...args) => __ref.getPlugins(...args);
+export const getFocused = (...args) => __ref.getFocused(...args);
 
 export const getWebComponent = () => __ref;
 
@@ -81,34 +83,36 @@ const onEvent = (e) => {
   readonly={readonly}
   resize={resize}
   can-focus={canFocus}
+  use-clipboard={useClipboard}
   theme={theme}
   row-class={rowClass}
   auto-size-column={autoSizeColumn}
   filter={filter}
   exporting={exporting}
-  on:beforeEdit={onEvent}
-  on:beforeRangeEdit={onEvent}
-  on:afterEdit={onEvent}
-  on:beforeAutofill={onEvent}
-  on:beforeRange={onEvent}
-  on:rowOrderChanged={onEvent}
-  on:beforeSourceSortingApply={onEvent}
-  on:beforeSortingApply={onEvent}
-  on:beforeSorting={onEvent}
-  on:rowDragStart={onEvent}
-  on:headerClick={onEvent}
-  on:beforeCellFocus={onEvent}
-  on:beforeSourceSet={onEvent}
-  on:afterSourceSet={onEvent}
-  on:beforeColumnsSet={onEvent}
-  on:afterColumnsSet={onEvent}
-  on:beforeFilterApply={onEvent}
-  on:beforeFilterTrimmed={onEvent}
-  on:beforeTrimmed={onEvent}
-  on:afterTrimmed={onEvent}
-  on:viewportScroll={onEvent}
-  on:beforeExport={onEvent}
-  on:beforeEditStart={onEvent}
+  on:beforeedit={onEvent}
+  on:beforerangeedit={onEvent}
+  on:afteredit={onEvent}
+  on:beforeautofill={onEvent}
+  on:beforeaange={onEvent}
+  on:roworderchanged={onEvent}
+  on:beforesourcesortingapply={onEvent}
+  on:beforesortingapply={onEvent}
+  on:beforesorting={onEvent}
+  on:rowdragstart={onEvent}
+  on:headerclick={onEvent}
+  on:beforecellfocus={onEvent}
+  on:beforefocuslost={onEvent}
+  on:beforesourceset={onEvent}
+  on:aftersourceset={onEvent}
+  on:beforecolumnsset={onEvent}
+  on:aftercolumnsset={onEvent}
+  on:beforefilterapply={onEvent}
+  on:beforefiltertrimmed={onEvent}
+  on:beforetrimmed={onEvent}
+  on:aftertrimmed={onEvent}
+  on:viewportscroll={onEvent}
+  on:beforeexport={onEvent}
+  on:beforeeditstart={onEvent}
   bind:this={__ref}
 >
   <slot></slot>
