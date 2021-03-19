@@ -1,8 +1,12 @@
 {
   "name": "@revolist/svelte-datagrid",
   "description": "Svelte data grid spreadsheet",
+<<<<<<< HEAD
   "version": "3.0.0-beta.4",
   "module": "dist/revogrid.js",
+=======
+  "version": "1.0.5",
+>>>>>>> e61ba3dc91619903589dae96039444dd86edb6b0
   "main": "dist/revogrid.js",
   "scripts": {
     "build": "tsc && rollup --config ./rollup.config.js",
@@ -49,9 +53,13 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@revolist/revogrid": "^3.0.0-beta.10",
     "@stencil/core": "2.4.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-node-resolve": "^5.2.0"
+=======
+    "@revolist/revogrid": "^2.9.6"
+>>>>>>> e61ba3dc91619903589dae96039444dd86edb6b0
   }
 }
