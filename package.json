@@ -1,7 +1,7 @@
 {
   "name": "@revolist/svelte-datagrid",
   "description": "Svelte data grid spreadsheet",
-  "version": "3.0.0",
+  "version": "3.0.2",
   "module": "dist/revogrid.js",
   "main": "dist/revogrid.js",
   "scripts": {
