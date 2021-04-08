@@ -43,7 +43,7 @@ interface RevogrHeaderEvents {
   headerResize: Parameters<JSX.RevogrHeader["onHeaderResize"]>[0]
   
   /**  */
-  headerDblClick: Parameters<JSX.RevogrHeader["onHeaderDblClick"]>[0]
+  headerdblClick: Parameters<JSX.RevogrHeader["onHeaderdblClick"]>[0]
 }
 
 interface RevogrHeaderSlots {
@@ -101,7 +101,7 @@ function create_fragment(ctx) {
 				dispose = [
 					listen(revogr_header, "initialHeaderClick", /*onEvent*/ ctx[5]),
 					listen(revogr_header, "headerResize", /*onEvent*/ ctx[5]),
-					listen(revogr_header, "headerDblClick", /*onEvent*/ ctx[5])
+					listen(revogr_header, "headerdblClick", /*onEvent*/ ctx[5])
 				];
 
 				mounted = true;

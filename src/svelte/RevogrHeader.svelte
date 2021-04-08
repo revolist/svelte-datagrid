@@ -44,7 +44,7 @@ const onEvent = (e) => {
   column-filter={columnFilter}
   on:initialHeaderClick={onEvent}
   on:headerResize={onEvent}
-  on:headerDblClick={onEvent}
+  on:headerdblClick={onEvent}
   bind:this={__ref}
 >
   <slot></slot>

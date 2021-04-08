@@ -32,6 +32,7 @@ const onEvent = (e) => {
   content-height={contentHeight}
   on:scrollViewport={onEvent}
   on:resizeViewport={onEvent}
+  on:scrollchange={onEvent}
   bind:this={__ref}
 >
   <slot></slot>

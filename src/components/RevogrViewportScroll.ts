@@ -20,6 +20,9 @@ interface RevogrViewportScrollEvents {
   
   /**  */
   resizeViewport: Parameters<JSX.RevogrViewportScroll["onResizeViewport"]>[0]
+  
+  /**  */
+  scrollchange: Parameters<JSX.RevogrViewportScroll["onScrollchange"]>[0]
 }
 
 interface RevogrViewportScrollSlots {
@@ -74,7 +77,8 @@ function create_fragment(ctx) {
 			if (!mounted) {
 				dispose = [
 					listen(revogr_viewport_scroll, "scrollViewport", /*onEvent*/ ctx[3]),
-					listen(revogr_viewport_scroll, "resizeViewport", /*onEvent*/ ctx[3])
+					listen(revogr_viewport_scroll, "resizeViewport", /*onEvent*/ ctx[3]),
+					listen(revogr_viewport_scroll, "scrollchange", /*onEvent*/ ctx[3])
 				];
 
 				mounted = true;

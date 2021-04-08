@@ -31,6 +31,7 @@ export let filter = undefined;
 export let trimmedRows = undefined;
 export let exporting = undefined;
 export let grouping = undefined;
+export let stretch = undefined;
 
 export const refresh = (...args) => __ref.refresh(...args);
 export const scrollToRow = (...args) => __ref.scrollToRow(...args);
@@ -89,6 +90,7 @@ const onEvent = (e) => {
   auto-size-column={autoSizeColumn}
   filter={filter}
   exporting={exporting}
+  stretch={stretch}
   on:beforeedit={onEvent}
   on:beforerangeedit={onEvent}
   on:afteredit={onEvent}
@@ -105,6 +107,7 @@ const onEvent = (e) => {
   on:beforesourceset={onEvent}
   on:aftersourceset={onEvent}
   on:beforecolumnsset={onEvent}
+  on:beforecolumnapplied={onEvent}
   on:aftercolumnsset={onEvent}
   on:beforefilterapply={onEvent}
   on:beforefiltertrimmed={onEvent}
