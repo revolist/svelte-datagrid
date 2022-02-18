@@ -8,6 +8,8 @@
     "build": "tsc && rollup --config ./rollup.config.js",
     "serve": "npm run build && webpack serve --content-base public  --config ./.webpack/webpack.dev.js"
   },
+  "svelte": "src/svelte/index.js",
+  "types": "src/index.d.ts",
   "keywords": [
     "spreadsheet",
     "svelte",
