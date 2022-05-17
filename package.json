@@ -9,7 +9,7 @@
     "serve": "npm run build && webpack serve --content-base public  --config ./.webpack/webpack.dev.js"
   },
   "svelte": "src/svelte/index.js",
-  "types": "src/index.d.ts",
+  "types": "src/revogrid.ts",
   "keywords": [
     "spreadsheet",
     "svelte",
