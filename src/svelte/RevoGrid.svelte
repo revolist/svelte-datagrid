@@ -68,6 +68,7 @@ $: if (__mounted) setProp('plugins', plugins);
 $: if (__mounted) setProp('columnTypes', columnTypes);
 $: if (__mounted) setProp('trimmedRows', trimmedRows);
 $: if (__mounted) setProp('grouping', grouping);
+$: if (__mounted) setProp("autoSizeColumn", autoSizeColumn)
 
 const onEvent = (e) => {
   e.stopPropagation();
