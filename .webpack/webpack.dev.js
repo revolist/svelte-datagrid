@@ -60,6 +60,7 @@ module.exports = {
 	],
 	devtool: prod ? false : 'source-map',
 	devServer: {
+		static: path.resolve(__dirname, '../public'),
 		hot: true
 	}
 };

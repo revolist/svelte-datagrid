@@ -28,6 +28,7 @@ export let theme = undefined;
 export let rowClass = undefined;
 export let autoSizeColumn = undefined;
 export let filter = undefined;
+export let canMoveColumns = undefined;
 export let trimmedRows = undefined;
 export let exporting = undefined;
 export let grouping = undefined;
@@ -47,10 +48,12 @@ export const getVisibleSource = (...args) => __ref.getVisibleSource(...args);
 export const getSourceStore = (...args) => __ref.getSourceStore(...args);
 export const getColumnStore = (...args) => __ref.getColumnStore(...args);
 export const updateColumnSorting = (...args) => __ref.updateColumnSorting(...args);
+export const clearSorting = (...args) => __ref.clearSorting(...args);
 export const getColumns = (...args) => __ref.getColumns(...args);
 export const clearFocus = (...args) => __ref.clearFocus(...args);
 export const getPlugins = (...args) => __ref.getPlugins(...args);
 export const getFocused = (...args) => __ref.getFocused(...args);
+export const getSelectedRange = (...args) => __ref.getSelectedRange(...args);
 
 export const getWebComponent = () => __ref;
 
@@ -68,7 +71,6 @@ $: if (__mounted) setProp('plugins', plugins);
 $: if (__mounted) setProp('columnTypes', columnTypes);
 $: if (__mounted) setProp('trimmedRows', trimmedRows);
 $: if (__mounted) setProp('grouping', grouping);
-$: if (__mounted) setProp("autoSizeColumn", autoSizeColumn)
 
 const onEvent = (e) => {
   e.stopPropagation();
@@ -90,6 +92,7 @@ const onEvent = (e) => {
   row-class={rowClass}
   auto-size-column={autoSizeColumn}
   filter={filter}
+  can-move-columns={canMoveColumns}
   exporting={exporting}
   stretch={stretch}
   on:beforeedit={onEvent}
@@ -97,6 +100,7 @@ const onEvent = (e) => {
   on:afteredit={onEvent}
   on:beforeautofill={onEvent}
   on:beforeaange={onEvent}
+  on:afterfocus={onEvent}
   on:roworderchanged={onEvent}
   on:beforesourcesortingapply={onEvent}
   on:beforesortingapply={onEvent}
@@ -117,6 +121,7 @@ const onEvent = (e) => {
   on:viewportscroll={onEvent}
   on:beforeexport={onEvent}
   on:beforeeditstart={onEvent}
+  on:aftercolumnresize={onEvent}
   bind:this={__ref}
 >
   <slot></slot>

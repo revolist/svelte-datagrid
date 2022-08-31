@@ -43,7 +43,7 @@ const onEvent = (e) => {
   can-resize={canResize}
   column-filter={columnFilter}
   on:initialHeaderClick={onEvent}
-  on:headerResize={onEvent}
+  on:headerresize={onEvent}
   on:headerdblClick={onEvent}
   bind:this={__ref}
 >

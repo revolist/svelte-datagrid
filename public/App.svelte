@@ -1,7 +1,6 @@
 <script>
 	import {RevoGrid} from '../dist/revogrid';
-	import {defineCustomElements} from '@revolist/revogrid/custom-element';
-	defineCustomElements();
+
 	function generateHeader(index) {
 		const asciiFirstLetter = 65;
 		const lettersCount = 26;
@@ -41,12 +40,10 @@
 		};
 	}
 
-	let source;
-	let headers;
 	const data = generateFakeDataObject(100, 5);
-	source = data.source;
-	headers = data.headers;
+
+	let source = data.source;
+	let columns = data.headers;
 </script>
+<RevoGrid {source} {columns}></RevoGrid>
 
-
-<RevoGrid source={source} resize="true" columns={headers} theme="material"/>
