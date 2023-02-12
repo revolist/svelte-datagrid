@@ -17,7 +17,7 @@ Millions of cells and thousands columns easy and efficiently.
 
 <p align="center">
   <a href="https://revolist.github.io/revogrid">Demo and API</a> •
-  <a href="https://codesandbox.io/s/revogrid-svelte-latest-7g7vo8?file=/Grid.svelte">Svelte demo</a> •
+  <a href="https://codesandbox.io/p/github/pan93412/revogrid-svelte-example/master?file=%2Fsrc%2Fcomponent%2FGrid.svelte">Svelte demo</a> •
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
   <a href="https://github.com/revolist/revogrid/blob/master/src/components/revo-grid/readme.md">Docs</a> •
