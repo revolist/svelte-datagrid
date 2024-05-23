@@ -1,7 +1,7 @@
 /* eslint-disable */
 /* tslint:disable */
 // @ts-nocheck
-import type { Components, JSX } from '@revolist/revogrid';
+import { Components, JSX } from '@revolist/revogrid';
 
 
 interface RevogrOrderEditorProps {
@@ -24,17 +24,17 @@ interface RevogrOrderEditorEvents {
   /** Row drag started */
   rowdragstartinit: Parameters<JSX.RevogrOrderEditor["onRowdragstartinit"]>[0]
   
-  /** Row drag ended */
+  /** Row drag ended started */
   rowdragendinit: Parameters<JSX.RevogrOrderEditor["onRowdragendinit"]>[0]
   
-  /** Row move */
+  /** Row move started */
   rowdragmoveinit: Parameters<JSX.RevogrOrderEditor["onRowdragmoveinit"]>[0]
   
-  /** Row mouse move */
+  /** Row mouse move started */
   rowdragmousemove: Parameters<JSX.RevogrOrderEditor["onRowdragmousemove"]>[0]
   
   /** Row dragged, new range ready to be applied */
-  rowdragendinit: Parameters<JSX.RevogrOrderEditor["onRowdragendinit"]>[0]
+  rowdropinit: Parameters<JSX.RevogrOrderEditor["onRowdropinit"]>[0]
 }
 
 interface RevogrOrderEditorSlots {
@@ -92,7 +92,7 @@ function create_fragment(ctx) {
 					listen(revogr_order_editor, "rowdragendinit", /*onEvent*/ ctx[1]),
 					listen(revogr_order_editor, "rowdragmoveinit", /*onEvent*/ ctx[1]),
 					listen(revogr_order_editor, "rowdragmousemove", /*onEvent*/ ctx[1]),
-					listen(revogr_order_editor, "rowdragendinit", /*onEvent*/ ctx[1])
+					listen(revogr_order_editor, "rowdropinit", /*onEvent*/ ctx[1])
 				];
 
 				mounted = true;

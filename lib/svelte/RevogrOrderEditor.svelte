@@ -39,7 +39,7 @@ const onEvent = (e) => {
   on:rowdragendinit={onEvent}
   on:rowdragmoveinit={onEvent}
   on:rowdragmousemove={onEvent}
-  on:rowdragendinit={onEvent}
+  on:rowdropinit={onEvent}
   bind:this={__ref}
 >
   <slot></slot>

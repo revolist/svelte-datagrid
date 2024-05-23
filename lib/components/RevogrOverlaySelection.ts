@@ -1,7 +1,7 @@
 /* eslint-disable */
 /* tslint:disable */
 // @ts-nocheck
-import type { Components, JSX } from '@revolist/revogrid';
+import { Components, JSX } from '@revolist/revogrid';
 
 
 interface RevogrOverlaySelectionProps {
