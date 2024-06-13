@@ -10,6 +10,7 @@ const dispatch = createEventDispatcher();
 export let rowHeader = undefined;
 export let contentWidth = undefined;
 export let contentHeight = undefined;
+export let colType;
 
 export const setScroll = (...args) => __ref.setScroll(...args);
 export const changeScroll = (...args) => __ref.changeScroll(...args);
@@ -33,6 +34,7 @@ const onEvent = (e) => {
   row-header={rowHeader}
   content-width={contentWidth}
   content-height={contentHeight}
+  col-type={colType}
   on:scrollviewport={onEvent}
   on:resizeviewport={onEvent}
   on:scrollchange={onEvent}

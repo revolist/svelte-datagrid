@@ -39,6 +39,7 @@ export let additionalData = undefined;
 export let disableVirtualX = undefined;
 export let disableVirtualY = undefined;
 export let jobsBeforeRender = undefined;
+export let registerVNode = undefined;
 
 export const refresh = (...args) => __ref.refresh(...args);
 export const setDataAt = (...args) => __ref.setDataAt(...args);
@@ -50,7 +51,6 @@ export const addTrimmed = (...args) => __ref.addTrimmed(...args);
 export const scrollToCoordinate = (...args) => __ref.scrollToCoordinate(...args);
 export const setCellEdit = (...args) => __ref.setCellEdit(...args);
 export const setCellsFocus = (...args) => __ref.setCellsFocus(...args);
-export const registerVNode = (...args) => __ref.registerVNode(...args);
 export const getSource = (...args) => __ref.getSource(...args);
 export const getVisibleSource = (...args) => __ref.getVisibleSource(...args);
 export const getSourceStore = (...args) => __ref.getSourceStore(...args);
@@ -82,6 +82,7 @@ $: if (__mounted) setProp('focusTemplate', focusTemplate);
 $: if (__mounted) setProp('trimmedRows', trimmedRows);
 $: if (__mounted) setProp('grouping', grouping);
 $: if (__mounted) setProp('jobsBeforeRender', jobsBeforeRender);
+$: if (__mounted) setProp('registerVNode', registerVNode);
 
 const onEvent = (e) => {
   e.stopPropagation();
@@ -143,6 +144,7 @@ const onEvent = (e) => {
   on:filterconfigchanged={onEvent}
   on:rowheaderschanged={onEvent}
   on:beforegridrender={onEvent}
+  on:aftergridinit={onEvent}
   bind:this={__ref}
 >
   <slot></slot>
