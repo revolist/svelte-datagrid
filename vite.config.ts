@@ -23,6 +23,10 @@ export default defineConfig({
       ],
       output: {
         exports: 'named',
+        globals: {
+          '@revolist/revogrid': 'Revogrid',
+          '@revolist/revogrid/loader': 'RevogridLoader',
+        },
       },
     },
   },

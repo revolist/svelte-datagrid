@@ -46,9 +46,3 @@
 	let columns = data.headers;
 </script>
 <RevoGrid {source} {columns}></RevoGrid>
-
-<style>
-	#app {
-		height: 100%;
-	}
-</style>

@@ -38,6 +38,7 @@ export let stretch = undefined;
 export let additionalData = undefined;
 export let disableVirtualX = undefined;
 export let disableVirtualY = undefined;
+export let hideAttribution = undefined;
 export let jobsBeforeRender = undefined;
 export let registerVNode = undefined;
 
@@ -111,6 +112,7 @@ const onEvent = (e) => {
   additional-data={additionalData}
   disable-virtual-x={disableVirtualX}
   disable-virtual-y={disableVirtualY}
+  hide-attribution={hideAttribution}
   on:contentsizechanged={onEvent}
   on:beforeedit={onEvent}
   on:beforerangeedit={onEvent}
