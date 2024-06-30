@@ -1,5 +1,5 @@
 ---
-name: New issue
+name: Issue template
 about: Create a report to help us improve
 title: ''
 labels: ''
@@ -16,4 +16,4 @@ Search the repo and ensure your issue doesn't already exist. If so, it may:
 A clear and concise description of what the issue is.
 
 **To Reproduce**
-Create a minimal reproduction to illustrate the issue. Here's a [template](https://codesandbox.io/s/revogrid-svelte-latest-7g7vo8) to start you off.
+Create a minimal reproduction to illustrate the issue. Here's a [a sandbox](https://codesandbox.io) to start you off.
