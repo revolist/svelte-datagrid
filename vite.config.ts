@@ -17,9 +17,9 @@ export default defineConfig({
         main: 'lib/revogrid.ts',
       },
       external: [
-        // 'svelte',
+        'svelte',
         /node_modules/,
-        /@revolist\/revogrid/,
+        /^@revolist\/revogrid(\/.*)?$/,
       ],
       output: {
         exports: 'named',
