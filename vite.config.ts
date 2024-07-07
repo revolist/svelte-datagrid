@@ -9,12 +9,12 @@ export default defineConfig({
   build: {
     copyPublicDir: false,
     lib: {
-      entry: resolve(__dirname, 'lib/revogrid.ts'), // Library entry file
+      entry: resolve(__dirname, 'lib/index.ts'), // Library entry file
       name: 'SvelteDatagrid',
     },
     rollupOptions: {
       input: {
-        main: 'lib/revogrid.ts',
+        main: 'lib/index.ts',
       },
       external: [
         'svelte',
