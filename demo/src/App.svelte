@@ -1,10 +1,6 @@
 <script lang="ts">
-  import { RevoGrid } from '@revolist/svelte-datagrid';
-  import type { ColumnRegular } from '@revolist/revogrid';
+  import { RevoGrid, type ColumnRegular } from '@revolist/svelte-datagrid';
 
-  // This part to makesure revogrid component is loaded and ready
-  import { defineCustomElements } from '@revolist/revogrid/loader';
-  defineCustomElements();
 
   function generateHeader(index: number) {
     const asciiFirstLetter = 65;

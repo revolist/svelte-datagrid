@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [svelte(), dts({ include: ['lib'] })],
+  plugins: [dts({ rollupTypes: true, include: ['lib'] })],
   build: {
     copyPublicDir: false,
+    minify: false,
     lib: {
       entry: resolve(__dirname, 'lib/index.ts'), // Library entry file
       name: 'SvelteDatagrid',
@@ -17,20 +17,10 @@ export default defineConfig({
         main: 'lib/index.ts',
       },
       external: [
-        'svelte',
+        /^svelte($|\/)/,
         /node_modules/,
         /^@revolist\/revogrid(\/.*)?$/,
       ],
-      output: {
-        exports: 'named',
-        globals: {
-          '@revolist/revogrid': 'Revogrid',
-          '@revolist/revogrid/loader': 'RevogridLoader',
-        },
-      },
     },
-  },
-  server: {
-    open: '/src/index.html',
   },
 });

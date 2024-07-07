@@ -1,7 +1,8 @@
 /* eslint-disable */
 /* tslint:disable */
 // @ts-nocheck
-import RevoGrid from './RevoGrid.svelte';
 import { defineCustomElements } from '@revolist/revogrid/loader';
+
 defineCustomElements();
+import RevoGrid from './components/RevoGrid';
 export { RevoGrid };
