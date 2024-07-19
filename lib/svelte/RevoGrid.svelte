@@ -118,7 +118,7 @@ const onEvent = (e) => {
   on:beforerangeedit={onEvent}
   on:afteredit={onEvent}
   on:beforeautofill={onEvent}
-  on:beforeange={onEvent}
+  on:beforerange={onEvent}
   on:afterfocus={onEvent}
   on:roworderchanged={onEvent}
   on:beforesortingapply={onEvent}
