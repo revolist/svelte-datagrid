@@ -173,7 +173,7 @@ To prevent the default behavior of applying the edit data, you can call `e.preve
   
   /** Triggered before range applied.
 Use e.preventDefault() to prevent range. */
-  beforeange: Parameters<JSX.RevoGrid["onBeforeange"]>[0]
+  beforerange: Parameters<JSX.RevoGrid["onBeforerange"]>[0]
   
   /** Triggered after focus render finished.
 Can be used to access a focus element through `event.target` */
@@ -368,7 +368,7 @@ function create_fragment(ctx) {
 					listen(revo_grid, "beforerangeedit", /*onEvent*/ ctx[22]),
 					listen(revo_grid, "afteredit", /*onEvent*/ ctx[22]),
 					listen(revo_grid, "beforeautofill", /*onEvent*/ ctx[22]),
-					listen(revo_grid, "beforeange", /*onEvent*/ ctx[22]),
+					listen(revo_grid, "beforerange", /*onEvent*/ ctx[22]),
 					listen(revo_grid, "afterfocus", /*onEvent*/ ctx[22]),
 					listen(revo_grid, "roworderchanged", /*onEvent*/ ctx[22]),
 					listen(revo_grid, "beforesortingapply", /*onEvent*/ ctx[22]),
