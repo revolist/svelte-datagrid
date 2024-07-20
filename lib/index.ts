@@ -1,2 +1,2 @@
-export type * from '@revolist/revogrid';
+export * from '@revolist/revogrid';
 export * from './revogrid';
