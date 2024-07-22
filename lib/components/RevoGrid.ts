@@ -288,6 +288,12 @@ Useful for modifying or preventing the default row definition behavior. */
   
   /** Emmited after the grid is initialized. Connected to the DOM. */
   aftergridinit: Parameters<JSX.RevoGrid["onAftergridinit"]>[0]
+  
+  /** Emmited after the additional data is changed */
+  additionaldatachanged: Parameters<JSX.RevoGrid["onAdditionaldatachanged"]>[0]
+  
+  /** Emmited after the theme is changed */
+  afterthemechanged: Parameters<JSX.RevoGrid["onAfterthemechanged"]>[0]
 }
 
 interface RevoGridSlots {
@@ -396,7 +402,9 @@ function create_fragment(ctx) {
 					listen(revo_grid, "filterconfigchanged", /*onEvent*/ ctx[22]),
 					listen(revo_grid, "rowheaderschanged", /*onEvent*/ ctx[22]),
 					listen(revo_grid, "beforegridrender", /*onEvent*/ ctx[22]),
-					listen(revo_grid, "aftergridinit", /*onEvent*/ ctx[22])
+					listen(revo_grid, "aftergridinit", /*onEvent*/ ctx[22]),
+					listen(revo_grid, "additionaldatachanged", /*onEvent*/ ctx[22]),
+					listen(revo_grid, "afterthemechanged", /*onEvent*/ ctx[22])
 				];
 
 				mounted = true;

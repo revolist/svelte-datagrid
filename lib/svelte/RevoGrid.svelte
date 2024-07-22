@@ -147,6 +147,8 @@ const onEvent = (e) => {
   on:rowheaderschanged={onEvent}
   on:beforegridrender={onEvent}
   on:aftergridinit={onEvent}
+  on:additionaldatachanged={onEvent}
+  on:afterthemechanged={onEvent}
   bind:this={__ref}
 >
   <slot></slot>
