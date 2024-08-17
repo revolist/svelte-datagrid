@@ -41,6 +41,7 @@ export let disableVirtualY = undefined;
 export let hideAttribution = undefined;
 export let jobsBeforeRender = undefined;
 export let registerVNode = undefined;
+export let accessible = undefined;
 
 export const refresh = (...args) => __ref.refresh(...args);
 export const setDataAt = (...args) => __ref.setDataAt(...args);
@@ -113,6 +114,7 @@ const onEvent = (e) => {
   disable-virtual-x={disableVirtualX}
   disable-virtual-y={disableVirtualY}
   hide-attribution={hideAttribution}
+  accessible={accessible}
   on:contentsizechanged={onEvent}
   on:beforeedit={onEvent}
   on:beforerangeedit={onEvent}
