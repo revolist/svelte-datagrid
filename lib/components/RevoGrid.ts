@@ -290,6 +290,9 @@ Useful for modifying or preventing the default row definition behavior. */
   /** Emmited before the grid is rendered. */
   beforegridrender: Parameters<JSX.RevoGrid["onBeforegridrender"]>[0]
   
+  /** Emmited after the grid is rendered. */
+  aftergridrender: Parameters<JSX.RevoGrid["onAftergridrender"]>[0]
+  
   /** Emmited after the grid is initialized. Connected to the DOM. */
   aftergridinit: Parameters<JSX.RevoGrid["onAftergridinit"]>[0]
   
@@ -407,6 +410,7 @@ function create_fragment(ctx) {
 					listen(revo_grid, "filterconfigchanged", /*onEvent*/ ctx[23]),
 					listen(revo_grid, "rowheaderschanged", /*onEvent*/ ctx[23]),
 					listen(revo_grid, "beforegridrender", /*onEvent*/ ctx[23]),
+					listen(revo_grid, "aftergridrender", /*onEvent*/ ctx[23]),
 					listen(revo_grid, "aftergridinit", /*onEvent*/ ctx[23]),
 					listen(revo_grid, "additionaldatachanged", /*onEvent*/ ctx[23]),
 					listen(revo_grid, "afterthemechanged", /*onEvent*/ ctx[23])

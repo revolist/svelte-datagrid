@@ -148,6 +148,7 @@ const onEvent = (e) => {
   on:filterconfigchanged={onEvent}
   on:rowheaderschanged={onEvent}
   on:beforegridrender={onEvent}
+  on:aftergridrender={onEvent}
   on:aftergridinit={onEvent}
   on:additionaldatachanged={onEvent}
   on:afterthemechanged={onEvent}
