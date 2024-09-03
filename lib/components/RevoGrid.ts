@@ -242,7 +242,7 @@ Useful for performing actions or modifications before the final application of t
   
   /** Emitted before applying a filter to the data source.
 Use e.preventDefault() to prevent cell focus change.
-Modify the */
+Modify if you need to change filters. */
   beforefilterapply: Parameters<JSX.RevoGrid["onBeforefilterapply"]>[0]
   
   /** Emitted before applying a filter to the data source.
