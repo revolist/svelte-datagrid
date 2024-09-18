@@ -335,8 +335,8 @@ function create_fragment(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	const default_slot_template = /*#slots*/ ctx[62].default;
-	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[61], null);
+	const default_slot_template = /*#slots*/ ctx[63].default;
+	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[62], null);
 
 	return {
 		c() {
@@ -372,7 +372,7 @@ function create_fragment(ctx) {
 				default_slot.m(revo_grid, null);
 			}
 
-			/*revo_grid_binding*/ ctx[63](revo_grid);
+			/*revo_grid_binding*/ ctx[64](revo_grid);
 			current = true;
 
 			if (!mounted) {
@@ -421,15 +421,15 @@ function create_fragment(ctx) {
 		},
 		p(ctx, dirty) {
 			if (default_slot) {
-				if (default_slot.p && (!current || dirty[1] & /*$$scope*/ 1073741824)) {
+				if (default_slot.p && (!current || dirty[2] & /*$$scope*/ 1)) {
 					update_slot_base(
 						default_slot,
 						default_slot_template,
 						ctx,
-						/*$$scope*/ ctx[61],
+						/*$$scope*/ ctx[62],
 						!current
-						? get_all_dirty_from_scope(/*$$scope*/ ctx[61])
-						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[61], dirty, null),
+						? get_all_dirty_from_scope(/*$$scope*/ ctx[62])
+						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[62], dirty, null),
 						null
 					);
 				}
@@ -538,7 +538,7 @@ function create_fragment(ctx) {
 			}
 
 			if (default_slot) default_slot.d(detaching);
-			/*revo_grid_binding*/ ctx[63](null);
+			/*revo_grid_binding*/ ctx[64](null);
 			mounted = false;
 			run_all(dispose);
 		}
@@ -607,10 +607,11 @@ function instance($$self, $$props, $$invalidate) {
 	const getFocused = (...args) => __ref.getFocused(...args);
 	const getContentSize = (...args) => __ref.getContentSize(...args);
 	const getSelectedRange = (...args) => __ref.getSelectedRange(...args);
+	const refreshExtraElements = (...args) => __ref.refreshExtraElements(...args);
 	const getWebComponent = () => __ref;
 
 	onMount(() => {
-		$$invalidate(60, __mounted = true);
+		$$invalidate(61, __mounted = true);
 	});
 
 	const setProp = (prop, value) => {
@@ -665,59 +666,59 @@ function instance($$self, $$props, $$invalidate) {
 		if ('jobsBeforeRender' in $$props) $$invalidate(35, jobsBeforeRender = $$props.jobsBeforeRender);
 		if ('registerVNode' in $$props) $$invalidate(36, registerVNode = $$props.registerVNode);
 		if ('accessible' in $$props) $$invalidate(21, accessible = $$props.accessible);
-		if ('$$scope' in $$props) $$invalidate(61, $$scope = $$props.$$scope);
+		if ('$$scope' in $$props) $$invalidate(62, $$scope = $$props.$$scope);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty[0] & /*columns*/ 16777216 | $$self.$$.dirty[1] & /*__mounted*/ 536870912) {
+		if ($$self.$$.dirty[0] & /*columns*/ 16777216 | $$self.$$.dirty[1] & /*__mounted*/ 1073741824) {
 			$: if (__mounted) setProp('columns', columns);
 		}
 
-		if ($$self.$$.dirty[0] & /*source*/ 33554432 | $$self.$$.dirty[1] & /*__mounted*/ 536870912) {
+		if ($$self.$$.dirty[0] & /*source*/ 33554432 | $$self.$$.dirty[1] & /*__mounted*/ 1073741824) {
 			$: if (__mounted) setProp('source', source);
 		}
 
-		if ($$self.$$.dirty[0] & /*pinnedTopSource*/ 67108864 | $$self.$$.dirty[1] & /*__mounted*/ 536870912) {
+		if ($$self.$$.dirty[0] & /*pinnedTopSource*/ 67108864 | $$self.$$.dirty[1] & /*__mounted*/ 1073741824) {
 			$: if (__mounted) setProp('pinnedTopSource', pinnedTopSource);
 		}
 
-		if ($$self.$$.dirty[0] & /*pinnedBottomSource*/ 134217728 | $$self.$$.dirty[1] & /*__mounted*/ 536870912) {
+		if ($$self.$$.dirty[0] & /*pinnedBottomSource*/ 134217728 | $$self.$$.dirty[1] & /*__mounted*/ 1073741824) {
 			$: if (__mounted) setProp('pinnedBottomSource', pinnedBottomSource);
 		}
 
-		if ($$self.$$.dirty[0] & /*rowDefinitions*/ 268435456 | $$self.$$.dirty[1] & /*__mounted*/ 536870912) {
+		if ($$self.$$.dirty[0] & /*rowDefinitions*/ 268435456 | $$self.$$.dirty[1] & /*__mounted*/ 1073741824) {
 			$: if (__mounted) setProp('rowDefinitions', rowDefinitions);
 		}
 
-		if ($$self.$$.dirty[0] & /*editors*/ 536870912 | $$self.$$.dirty[1] & /*__mounted*/ 536870912) {
+		if ($$self.$$.dirty[0] & /*editors*/ 536870912 | $$self.$$.dirty[1] & /*__mounted*/ 1073741824) {
 			$: if (__mounted) setProp('editors', editors);
 		}
 
-		if ($$self.$$.dirty[0] & /*plugins*/ 1073741824 | $$self.$$.dirty[1] & /*__mounted*/ 536870912) {
+		if ($$self.$$.dirty[0] & /*plugins*/ 1073741824 | $$self.$$.dirty[1] & /*__mounted*/ 1073741824) {
 			$: if (__mounted) setProp('plugins', plugins);
 		}
 
-		if ($$self.$$.dirty[1] & /*__mounted, columnTypes*/ 536870913) {
+		if ($$self.$$.dirty[1] & /*__mounted, columnTypes*/ 1073741825) {
 			$: if (__mounted) setProp('columnTypes', columnTypes);
 		}
 
-		if ($$self.$$.dirty[1] & /*__mounted, focusTemplate*/ 536870914) {
+		if ($$self.$$.dirty[1] & /*__mounted, focusTemplate*/ 1073741826) {
 			$: if (__mounted) setProp('focusTemplate', focusTemplate);
 		}
 
-		if ($$self.$$.dirty[1] & /*__mounted, trimmedRows*/ 536870916) {
+		if ($$self.$$.dirty[1] & /*__mounted, trimmedRows*/ 1073741828) {
 			$: if (__mounted) setProp('trimmedRows', trimmedRows);
 		}
 
-		if ($$self.$$.dirty[1] & /*__mounted, grouping*/ 536870920) {
+		if ($$self.$$.dirty[1] & /*__mounted, grouping*/ 1073741832) {
 			$: if (__mounted) setProp('grouping', grouping);
 		}
 
-		if ($$self.$$.dirty[1] & /*__mounted, jobsBeforeRender*/ 536870928) {
+		if ($$self.$$.dirty[1] & /*__mounted, jobsBeforeRender*/ 1073741840) {
 			$: if (__mounted) setProp('jobsBeforeRender', jobsBeforeRender);
 		}
 
-		if ($$self.$$.dirty[1] & /*__mounted, registerVNode*/ 536870944) {
+		if ($$self.$$.dirty[1] & /*__mounted, registerVNode*/ 1073741856) {
 			$: if (__mounted) setProp('registerVNode', registerVNode);
 		}
 	};
@@ -782,6 +783,7 @@ function instance($$self, $$props, $$invalidate) {
 		getFocused,
 		getContentSize,
 		getSelectedRange,
+		refreshExtraElements,
 		getWebComponent,
 		__mounted,
 		$$scope,
@@ -870,7 +872,8 @@ class RevoGrid extends SvelteComponent {
 				getFocused: 56,
 				getContentSize: 57,
 				getSelectedRange: 58,
-				getWebComponent: 59
+				refreshExtraElements: 59,
+				getWebComponent: 60
 			},
 			null,
 			[-1, -1, -1]
@@ -1016,8 +1019,16 @@ Including all pinned data */
 		return this.$$.ctx[58];
 	}
 
-	get getWebComponent(): HTMLRevoGridElement | undefined {
+	
+  /** Refresh extra elements. Triggers re-rendering of extra elements and functions.
+Part of extraElements and registerVNode methods.
+Useful for plugins. */
+ get refreshExtraElements(): Components.RevoGrid["refreshExtraElements"] {
 		return this.$$.ctx[59];
+	}
+
+	get getWebComponent(): HTMLRevoGridElement | undefined {
+		return this.$$.ctx[60];
 	}
 }
 
