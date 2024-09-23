@@ -64,9 +64,10 @@ If custom editor in use method getValue required.
 Check interfaces.d.ts `EditorBase` for more info. */
   applyOnClose?: Components.RevoGrid["applyOnClose"]
   
-  /** Custom grid plugins.
-Has to be predefined during first grid init.
-Every plugin should be inherited from BasePlugin. */
+  /** Custom grid plugins. Can be added or removed at runtime.
+Every plugin should be inherited from BasePlugin class.
+
+For more details check [Plugin guide](https://rv-grid.com/guide/plugin/) */
   plugins?: Components.RevoGrid["plugins"]
   
   /** Column Types Format.
