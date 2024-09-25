@@ -159,41 +159,41 @@ Currently, the event responsible for applying the new content size does not prov
 To retrieve the actual content size, you can utilize the `getContentSize` function after the event has been triggered. */
   contentsizechanged: Parameters<JSX.RevoGrid["onContentsizechanged"]>[0]
   
-  /** This event is triggered before the data is edited.
+  /** Before the data is edited.
 To prevent the default behavior of editing data and use your own implementation, call `e.preventDefault()`.
 To override the edit result with your own value, set the `e.val` property to your desired value. */
   beforeedit: Parameters<JSX.RevoGrid["onBeforeedit"]>[0]
   
-  /** This event is triggered before applying range data, specifically when a range selection occurs.
+  /** Before applying range data, specifically when a range selection occurs.
 To customize the data and prevent the default edit data from being set, you can call `e.preventDefault()`. */
   beforerangeedit: Parameters<JSX.RevoGrid["onBeforerangeedit"]>[0]
   
-  /** Triggered after data applied or range changed. */
+  /** After data applied or range changed. */
   afteredit: Parameters<JSX.RevoGrid["onAfteredit"]>[0]
   
-  /** This event is triggered before autofill is applied.
+  /** Before autofill is applied.
 To prevent the default behavior of applying the edit data, you can call `e.preventDefault()`. */
   beforeautofill: Parameters<JSX.RevoGrid["onBeforeautofill"]>[0]
   
-  /** Triggered before range applied.
+  /** Before autofill is applied. Runs before beforeautofill event.
 Use e.preventDefault() to prevent range. */
   beforerange: Parameters<JSX.RevoGrid["onBeforerange"]>[0]
   
-  /** Triggered after focus render finished.
+  /** After focus render finished.
 Can be used to access a focus element through `event.target`.
 This is just a duplicate of `afterfocus` from `revogr-focus.tsx`. */
   afterfocus: Parameters<JSX.RevoGrid["onAfterfocus"]>[0]
   
-  /** This event is triggered before the order of `rgRow` is applied.
+  /** Before the order of `rgRow` is applied.
 To prevent the default behavior of changing the order of `rgRow`, you can call `e.preventDefault()`. */
   roworderchanged: Parameters<JSX.RevoGrid["onRoworderchanged"]>[0]
   
-  /** Triggered by sorting.plugin.ts
+  /** By sorting.plugin.ts
 Before sorting apply.
 Use e.preventDefault() to prevent sorting data change. */
   beforesortingapply: Parameters<JSX.RevoGrid["onBeforesortingapply"]>[0]
   
-  /** Triggered by sorting.plugin.ts
+  /** By sorting.plugin.ts
 Before sorting event.
 Initial sorting triggered, if this event stops no other event called.
 Use e.preventDefault() to prevent sorting. */
@@ -207,11 +207,11 @@ To change the item name at the start of the row order change, you can set `e.tex
   /** On header click. */
   headerclick: Parameters<JSX.RevoGrid["onHeaderclick"]>[0]
   
-  /** This event is triggered before the cell focus is changed.
+  /** Before the cell focus is changed.
 To prevent the default behavior of changing the cell focus, you can call `e.preventDefault()`. */
   beforecellfocus: Parameters<JSX.RevoGrid["onBeforecellfocus"]>[0]
   
-  /** This event is triggered before the grid focus is lost.
+  /** Before the grid focus is lost.
 To prevent the default behavior of changing the cell focus, you can call `e.preventDefault()`. */
   beforefocuslost: Parameters<JSX.RevoGrid["onBeforefocuslost"]>[0]
   
