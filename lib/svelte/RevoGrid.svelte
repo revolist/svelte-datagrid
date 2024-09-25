@@ -41,6 +41,7 @@ export let disableVirtualY = undefined;
 export let hideAttribution = undefined;
 export let jobsBeforeRender = undefined;
 export let registerVNode = undefined;
+export let accessible = undefined;
 
 export const refresh = (...args) => __ref.refresh(...args);
 export const setDataAt = (...args) => __ref.setDataAt(...args);
@@ -64,6 +65,7 @@ export const getPlugins = (...args) => __ref.getPlugins(...args);
 export const getFocused = (...args) => __ref.getFocused(...args);
 export const getContentSize = (...args) => __ref.getContentSize(...args);
 export const getSelectedRange = (...args) => __ref.getSelectedRange(...args);
+export const refreshExtraElements = (...args) => __ref.refreshExtraElements(...args);
 
 export const getWebComponent = () => __ref;
 
@@ -113,6 +115,7 @@ const onEvent = (e) => {
   disable-virtual-x={disableVirtualX}
   disable-virtual-y={disableVirtualY}
   hide-attribution={hideAttribution}
+  accessible={accessible}
   on:contentsizechanged={onEvent}
   on:beforeedit={onEvent}
   on:beforerangeedit={onEvent}
@@ -146,6 +149,7 @@ const onEvent = (e) => {
   on:filterconfigchanged={onEvent}
   on:rowheaderschanged={onEvent}
   on:beforegridrender={onEvent}
+  on:aftergridrender={onEvent}
   on:aftergridinit={onEvent}
   on:additionaldatachanged={onEvent}
   on:afterthemechanged={onEvent}
