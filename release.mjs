@@ -59,8 +59,6 @@ function updatePackageJsonVersion(packageDir, version) {
 function main() {
   const fullPath = path.resolve(__dirname);
   updatePackageJsonVersion(fullPath, newVersion);
-  // update demo
-  updatePackageJsonVersion(path.join(fullPath, 'demo'), newVersion, localDependencyName);
   console.log(chalk.blue('Version update complete.'));
 }
 

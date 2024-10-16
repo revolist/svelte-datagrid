@@ -15,7 +15,10 @@
      */
     "allowJs": true,
     "checkJs": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {
+      "@revolist/svelte-datagrid": ["./lib"]
+    }
   },
   "include": ["lib/**/*.ts", "lib/**/*.js", "lib/**/*.svelte"],
   "references": [{ "path": "./tsconfig.node.json" }]

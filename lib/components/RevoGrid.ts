@@ -1,7 +1,7 @@
 /* eslint-disable */
 /* tslint:disable */
 // @ts-nocheck
-import { Components, JSX } from '@revolist/revogrid';
+import type { Components, JSX } from '@revolist/revogrid';
 
 
 interface RevoGridProps {
