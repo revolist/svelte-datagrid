@@ -26,7 +26,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      // '@revolist/svelte-datagrid': resolve(__dirname, '../dist'),
+      '@revolist/svelte-datagrid': resolve(__dirname, './lib'),
     },
   },
   server: {

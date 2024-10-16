@@ -1,7 +1,7 @@
 /* eslint-disable */
 /* tslint:disable */
 // @ts-nocheck
-import { Components, JSX } from '@revolist/revogrid';
+import type { Components, JSX } from '@revolist/revogrid';
 
 
 interface RevoGridProps {
@@ -145,7 +145,9 @@ When several plugins require initial rendering this will prevent double initial 
   
   /** Register new virtual node inside of grid.
 Used for additional items creation such as plugin elements.
-Should be set before grid render inside of plugins. */
+Should be set before grid render inside of plugins.
+Can return VNode result of h() function or a function that returns VNode.
+Function can be used for performance improvement and additional renders. */
   registerVNode?: Components.RevoGrid["registerVNode"]
   
   /** Enable accessibility. If disabled, the grid will not be accessible. */
