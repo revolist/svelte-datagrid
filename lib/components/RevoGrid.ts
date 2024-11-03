@@ -891,7 +891,7 @@ Can be specific part as rgRow or pinned rgRow or 'all' by default. */
 	}
 
 	
-  /** Sets data at specified cell.
+  /** Refreshes data at specified cell.
 Useful for performance optimization.
 No viewport update will be triggered. */
  get setDataAt(): Components.RevoGrid["setDataAt"] {
