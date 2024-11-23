@@ -304,6 +304,9 @@ Useful for modifying or preventing the default row definition behavior. */
   
   /** Emmited after the theme is changed */
   afterthemechanged: Parameters<JSX.RevoGrid["onAfterthemechanged"]>[0]
+  
+  /** Emmited after grid created */
+  created: Parameters<JSX.RevoGrid["onCreated"]>[0]
 }
 
 interface RevoGridSlots {
@@ -416,7 +419,8 @@ function create_fragment(ctx) {
 					listen(revo_grid, "aftergridrender", /*onEvent*/ ctx[23]),
 					listen(revo_grid, "aftergridinit", /*onEvent*/ ctx[23]),
 					listen(revo_grid, "additionaldatachanged", /*onEvent*/ ctx[23]),
-					listen(revo_grid, "afterthemechanged", /*onEvent*/ ctx[23])
+					listen(revo_grid, "afterthemechanged", /*onEvent*/ ctx[23]),
+					listen(revo_grid, "created", /*onEvent*/ ctx[23])
 				];
 
 				mounted = true;

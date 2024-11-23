@@ -153,6 +153,7 @@ const onEvent = (e) => {
   on:aftergridinit={onEvent}
   on:additionaldatachanged={onEvent}
   on:afterthemechanged={onEvent}
+  on:created={onEvent}
   bind:this={__ref}
 >
   <slot></slot>
