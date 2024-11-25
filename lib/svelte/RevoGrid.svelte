@@ -29,6 +29,7 @@ export let theme = undefined;
 export let rowClass = undefined;
 export let autoSizeColumn = undefined;
 export let filter = undefined;
+export let sorting = undefined;
 export let focusTemplate = undefined;
 export let canMoveColumns = undefined;
 export let trimmedRows = undefined;
@@ -81,6 +82,7 @@ $: if (__mounted) setProp('rowDefinitions', rowDefinitions);
 $: if (__mounted) setProp('editors', editors);
 $: if (__mounted) setProp('plugins', plugins);
 $: if (__mounted) setProp('columnTypes', columnTypes);
+$: if (__mounted) setProp('sorting', sorting);
 $: if (__mounted) setProp('focusTemplate', focusTemplate);
 $: if (__mounted) setProp('trimmedRows', trimmedRows);
 $: if (__mounted) setProp('grouping', grouping);
@@ -147,6 +149,7 @@ const onEvent = (e) => {
   on:aftercolumnresize={onEvent}
   on:beforerowdefinition={onEvent}
   on:filterconfigchanged={onEvent}
+  on:sortingconfigchanged={onEvent}
   on:rowheaderschanged={onEvent}
   on:beforegridrender={onEvent}
   on:aftergridrender={onEvent}
