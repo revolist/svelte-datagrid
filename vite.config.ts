@@ -24,11 +24,11 @@ export default defineConfig({
       ],
     },
   },
-  resolve: {
-    alias: {
-      '@revolist/svelte-datagrid': resolve(__dirname, './lib'),
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     '@revolist/svelte-datagrid': resolve(__dirname, './lib'),
+  //   },
+  // },
   server: {
     open: '/demo/index.html',
   }
