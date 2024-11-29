@@ -1,7 +1,7 @@
 /* eslint-disable */
 /* tslint:disable */
 // @ts-nocheck
-import { Components, JSX } from '@revolist/revogrid';
+import type { Components, JSX } from '@revolist/revogrid';
 
 
 interface RevoGridProps {
@@ -97,6 +97,10 @@ Can be boolean.
 Or can be filter collection See `FilterCollection` for more info. */
   filter?: Components.RevoGrid["filter"]
   
+  /** Alternative way to set sorting.
+`{columns: [{prop: 'name', order: 'asc'}]}` */
+  sorting?: Components.RevoGrid["sorting"]
+  
   /** Apply changes typed in editor on editor close except Escape cases.
 If custom editor in use method `getValue` required.
 Check `interfaces.d.ts` `EditorBase` for more info. */
@@ -145,7 +149,9 @@ When several plugins require initial rendering this will prevent double initial 
   
   /** Register new virtual node inside of grid.
 Used for additional items creation such as plugin elements.
-Should be set before grid render inside of plugins. */
+Should be set before grid render inside of plugins.
+Can return VNode result of h() function or a function that returns VNode.
+Function can be used for performance improvement and additional renders. */
   registerVNode?: Components.RevoGrid["registerVNode"]
   
   /** Enable accessibility. If disabled, the grid will not be accessible. */
@@ -159,41 +165,41 @@ Currently, the event responsible for applying the new content size does not prov
 To retrieve the actual content size, you can utilize the `getContentSize` function after the event has been triggered. */
   contentsizechanged: Parameters<JSX.RevoGrid["onContentsizechanged"]>[0]
   
-  /** This event is triggered before the data is edited.
+  /** Before the data is edited.
 To prevent the default behavior of editing data and use your own implementation, call `e.preventDefault()`.
 To override the edit result with your own value, set the `e.val` property to your desired value. */
   beforeedit: Parameters<JSX.RevoGrid["onBeforeedit"]>[0]
   
-  /** This event is triggered before applying range data, specifically when a range selection occurs.
+  /** Before applying range data, specifically when a range selection occurs.
 To customize the data and prevent the default edit data from being set, you can call `e.preventDefault()`. */
   beforerangeedit: Parameters<JSX.RevoGrid["onBeforerangeedit"]>[0]
   
-  /** Triggered after data applied or range changed. */
+  /** After data applied or range changed. */
   afteredit: Parameters<JSX.RevoGrid["onAfteredit"]>[0]
   
-  /** This event is triggered before autofill is applied.
+  /** Before autofill is applied.
 To prevent the default behavior of applying the edit data, you can call `e.preventDefault()`. */
   beforeautofill: Parameters<JSX.RevoGrid["onBeforeautofill"]>[0]
   
-  /** Triggered before range applied.
+  /** Before autofill is applied. Runs before beforeautofill event.
 Use e.preventDefault() to prevent range. */
   beforerange: Parameters<JSX.RevoGrid["onBeforerange"]>[0]
   
-  /** Triggered after focus render finished.
+  /** After focus render finished.
 Can be used to access a focus element through `event.target`.
 This is just a duplicate of `afterfocus` from `revogr-focus.tsx`. */
   afterfocus: Parameters<JSX.RevoGrid["onAfterfocus"]>[0]
   
-  /** This event is triggered before the order of `rgRow` is applied.
+  /** Before the order of `rgRow` is applied.
 To prevent the default behavior of changing the order of `rgRow`, you can call `e.preventDefault()`. */
   roworderchanged: Parameters<JSX.RevoGrid["onRoworderchanged"]>[0]
   
-  /** Triggered by sorting.plugin.ts
+  /** By sorting.plugin.ts
 Before sorting apply.
 Use e.preventDefault() to prevent sorting data change. */
   beforesortingapply: Parameters<JSX.RevoGrid["onBeforesortingapply"]>[0]
   
-  /** Triggered by sorting.plugin.ts
+  /** By sorting.plugin.ts
 Before sorting event.
 Initial sorting triggered, if this event stops no other event called.
 Use e.preventDefault() to prevent sorting. */
@@ -207,11 +213,11 @@ To change the item name at the start of the row order change, you can set `e.tex
   /** On header click. */
   headerclick: Parameters<JSX.RevoGrid["onHeaderclick"]>[0]
   
-  /** This event is triggered before the cell focus is changed.
+  /** Before the cell focus is changed.
 To prevent the default behavior of changing the cell focus, you can call `e.preventDefault()`. */
   beforecellfocus: Parameters<JSX.RevoGrid["onBeforecellfocus"]>[0]
   
-  /** This event is triggered before the grid focus is lost.
+  /** Before the grid focus is lost.
 To prevent the default behavior of changing the cell focus, you can call `e.preventDefault()`. */
   beforefocuslost: Parameters<JSX.RevoGrid["onBeforefocuslost"]>[0]
   
@@ -285,6 +291,9 @@ Useful for modifying or preventing the default row definition behavior. */
   /** Emitted when the filter configuration is changed */
   filterconfigchanged: Parameters<JSX.RevoGrid["onFilterconfigchanged"]>[0]
   
+  /** Emitted when the sorting configuration is changed */
+  sortingconfigchanged: Parameters<JSX.RevoGrid["onSortingconfigchanged"]>[0]
+  
   /** Emmited when the row headers are changed. */
   rowheaderschanged: Parameters<JSX.RevoGrid["onRowheaderschanged"]>[0]
   
@@ -302,6 +311,9 @@ Useful for modifying or preventing the default row definition behavior. */
   
   /** Emmited after the theme is changed */
   afterthemechanged: Parameters<JSX.RevoGrid["onAfterthemechanged"]>[0]
+  
+  /** Emmited after grid created */
+  created: Parameters<JSX.RevoGrid["onCreated"]>[0]
 }
 
 interface RevoGridSlots {
@@ -309,6 +321,7 @@ interface RevoGridSlots {
 }
   
 import "svelte/internal/disclose-version";
+import "svelte/internal/flags/legacy";
 import * as $ from "svelte/internal/client";
 import { createEventDispatcher, onMount } from 'svelte';
 
@@ -342,6 +355,7 @@ export default function RevoGrid($$anchor, $$props) {
 	let rowClass = $.prop($$props, "rowClass", 8, undefined);
 	let autoSizeColumn = $.prop($$props, "autoSizeColumn", 8, undefined);
 	let filter = $.prop($$props, "filter", 8, undefined);
+	let sorting = $.prop($$props, "sorting", 8, undefined);
 	let focusTemplate = $.prop($$props, "focusTemplate", 8, undefined);
 	let canMoveColumns = $.prop($$props, "canMoveColumns", 8, undefined);
 	let trimmedRows = $.prop($$props, "trimmedRows", 8, undefined);
@@ -476,6 +490,16 @@ export default function RevoGrid($$anchor, $$props) {
 	$.legacy_pre_effect(
 		() => (
 			$.get(__mounted),
+			$.deep_read_state(sorting())
+		),
+		() => {
+			if ($.get(__mounted)) setProp('sorting', sorting());
+		}
+	);
+
+	$.legacy_pre_effect(
+		() => (
+			$.get(__mounted),
 			$.deep_read_state(focusTemplate())
 		),
 		() => {
@@ -527,13 +551,11 @@ export default function RevoGrid($$anchor, $$props) {
 	$.init();
 
 	var revo_grid = root();
-
-	$.bind_this(revo_grid, ($$value) => $.set(__ref, $$value), () => $.get(__ref));
-
 	var node = $.child(revo_grid);
 
-	$.slot(node, $.default_slot($$props), {}, null);
+	$.slot(node, $$props, "default", {}, null);
 	$.reset(revo_grid);
+	$.bind_this(revo_grid, ($$value) => $.set(__ref, $$value), () => $.get(__ref));
 
 	$.template_effect(() => {
 		$.set_custom_element_data(revo_grid, "row-headers", rowHeaders());
@@ -591,12 +613,14 @@ export default function RevoGrid($$anchor, $$props) {
 	$.event("aftercolumnresize", revo_grid, onEvent);
 	$.event("beforerowdefinition", revo_grid, onEvent);
 	$.event("filterconfigchanged", revo_grid, onEvent);
+	$.event("sortingconfigchanged", revo_grid, onEvent);
 	$.event("rowheaderschanged", revo_grid, onEvent);
 	$.event("beforegridrender", revo_grid, onEvent);
 	$.event("aftergridrender", revo_grid, onEvent);
 	$.event("aftergridinit", revo_grid, onEvent);
 	$.event("additionaldatachanged", revo_grid, onEvent);
 	$.event("afterthemechanged", revo_grid, onEvent);
+	$.event("created", revo_grid, onEvent);
 	$.append($$anchor, revo_grid);
 	$.bind_prop($$props, "refresh", refresh);
 	$.bind_prop($$props, "setDataAt", setDataAt);

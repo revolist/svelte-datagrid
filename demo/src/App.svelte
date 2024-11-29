@@ -1,8 +1,8 @@
 <script lang="ts">
   import { RevoGrid, type ColumnRegular } from '@revolist/svelte-datagrid';
 
-
-  function generateHeader(index: number) {
+  // Function to generate column headers
+  function generateHeader(index: number): string {
     const asciiFirstLetter = 65;
     const lettersCount = 26;
     let div = index + 1;
@@ -11,40 +11,44 @@
     while (div > 0) {
       pos = (div - 1) % lettersCount;
       label = String.fromCharCode(asciiFirstLetter + pos) + label;
-      div = parseInt(((div - pos) / lettersCount).toString(), 10);
+      div = Math.floor((div - pos) / lettersCount);
     }
     return label.toLowerCase();
   }
 
+  // Function to generate fake data
   function generateFakeDataObject(rowsNumber: number, colsNumber: number) {
     const result: any[] = [];
     const columns: Record<number, ColumnRegular> = {};
-    const all = colsNumber * rowsNumber;
-    for (let j = 0; j < all; j++) {
-      let col = j % colsNumber;
-      let row = (j / colsNumber) | 0;
+    const totalCells = rowsNumber * colsNumber;
+
+    for (let i = 0; i < totalCells; i++) {
+      const col = i % colsNumber;
+      const row = Math.floor(i / colsNumber);
+
       if (!result[row]) {
         result[row] = {};
       }
+
       if (!columns[col]) {
         columns[col] = {
           name: generateHeader(col),
           prop: col,
         };
       }
-      result[row][col] = row + ':' + col;
+
+      result[row][col] = `${row}:${col}`;
     }
-    let headers = Object.keys(columns).map(k => columns[parseInt(k, 10)]);
-    return {
-      source: result,
-      headers,
-    };
+
+    const headers = Object.keys(columns).map(key => columns[parseInt(key, 10)]);
+    return { source: result, headers };
   }
 
+  // Generate initial data
   const data = generateFakeDataObject(100, 5);
-
-  let source = data.source;
-  let columns = data.headers;
+  const source = data.source;
+  const columns = data.headers;
 </script>
 
-<RevoGrid {source} {columns}></RevoGrid>
+<!-- Render the RevoGrid component -->
+<RevoGrid {source} {columns} />

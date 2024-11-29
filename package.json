@@ -1,6 +1,6 @@
 {
   "name": "@revolist/svelte-datagrid",
-  "version": "4.10.11-next",
+  "version": "4.10.34",
   "description": "Svelte DataGrid Spreadsheet component with native cell render support",
   "main": "./dist/svelte-datagrid.umd.cjs",
   "module": "./dist/svelte-datagrid.js",
@@ -9,8 +9,7 @@
     ".": {
       "svelte": "./dist/svelte-datagrid.js",
       "import": "./dist/svelte-datagrid.js",
-      "require": "./dist/svelte-datagrid.umd.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/svelte-datagrid.umd.cjs"
     }
   },
   "files": [
@@ -65,15 +64,15 @@
   "devDependencies": {
 		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.7",
     "@tsconfig/svelte": "^5.0.4",
-    "svelte": "^5.0.0-next.259",
-    "svelte-check": "^4.0.2",
-    "tslib": "^2.6.3",
-    "typescript": "^5.4.2",
-    "vite": "^5.3.3",
-    "vite-plugin-dts": "^3.9.1"
+    "svelte": "^5.2.10",
+    "svelte-check": "^4.1.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.1",
+    "vite-plugin-dts": "^4.3.0"
   },
   "dependencies": {
-    "@revolist/revogrid": "4.10.12"
+    "@revolist/revogrid": "^4.10.34"
   },
   "publishConfig": {
     "access": "public"
