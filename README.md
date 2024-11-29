@@ -1,11 +1,17 @@
-## ⚠️ Important Notice
+### 🚨 Repository Notice 🚨
+
+This repo is read-only and will be **deprecated** in v5+ in favor of monorepos. Post issues [here](https://github.com/revolist/revogrid). Happy coding! 🖥️💻
+
+---
+
 
 We have updated our latest version to support **Svelte 5** following its official release. 🎉  
 Read more about the announcement here: [Svelte 5 is Alive](https://svelte.dev/blog/svelte-5-is-alive).
 
-If you want to continue using **Svelte 4**, please consider switch to the [svelte-4 branch](https://github.com/revolist/svelte-datagrid/tree/svelte-4).
+If you want to continue using **Svelte 4**, please switch to the [svelte-4](https://github.com/revolist/svelte-datagrid/tree/svelte-4) branch.
 
 ---
+
 
 <p align="center">
   <a href="https://rv-grid.com">
@@ -16,8 +22,10 @@ If you want to continue using **Svelte 4**, please consider switch to the [svelt
 <p align="center">
   <a href="https://www.npmjs.com/package/@revolist/revogrid"><img src="https://img.shields.io/npm/v/@revolist/revogrid" alt="Latest Version on NPM"/></a>
   <a href="https://github.com/revolist/revogrid/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/@revolist/revogrid" alt="Software License"/></a>
-  <img src="https://badgen.net/bundlephobia/dependency-count/@revolist/revogrid@latest" alt="Tree shaking"/>
-  <img src="https://badgen.net/bundlephobia/tree-shaking/@revolist/revogrid@latest" alt="Tree shaking"/>
+  <img src="https://badgen.net/bundlephobia/dependency-count/@revolist/revogrid" alt="Dependency count"/>
+  <img src="https://badgen.net/bundlephobia/tree-shaking/@revolist/revogrid" alt="Tree shaking"/>
+  <img src="https://img.shields.io/bundlephobia/min/@revolist/revogrid" alt="Bundle size"/>
+  <img src="https://sonarcloud.io/api/project_badges/measure?project=revolist_revogrid&metric=alert_status" alt="Sonar Quality Gate"/>
 </p>
 
 #
@@ -33,7 +41,7 @@ Support Millions of cells and thousands of columns easy and efficiently for fast
   <a href="#key-features">Key Features</a> •
   <a href="#basic-usage">How To Use</a> •
   <a href="#installation">Installation</a> •
-  <a href="https://github.com/revolist/revogrid/blob/master/src/components/revo-grid/readme.md">Docs</a> •
+  <a href="https://rv-grid.com/guide/">Docs</a> •
   <a href="#license">License</a>
 </p>
 
@@ -41,9 +49,12 @@ Support Millions of cells and thousands of columns easy and efficiently for fast
 <i>RevoGrid material theme.</i>
 <br>
 
+
 ## Key Features
 
 - **High Performance**: Handles millions of cells in the viewport with a powerful core built by default.
+
+- **Accessibility**: Follows WAI-ARIA best practices.
 
 - **Keyboard Support**:
   - Excel-like focus for efficient navigation and editing.
@@ -53,6 +64,14 @@ Support Millions of cells and thousands of columns easy and efficiently for fast
 - **Lightweight**: Minimal initial bundle size ![Min size](https://badgen.net/bundlephobia/min/@revolist/revogrid@latest). Can be imported with polyfills or as a module for modern browsers.
 
 - **Intelligent Virtual DOM**: Smart row recombination to minimize redraws.
+
+- **Virtual Scroll**: Handles large datasets with infinite scroll.
+
+- **Formula Support**: Evaluate formulas in cell data.
+
+- **Master Detail/Subtables/Forms**: Expand rows to reveal child data.
+
+- **Drag and Drop**: Drag and drop in rows and columns.
 
 - **Sorting**: Multiple options, customizable per column, with advanced event handling.
 
@@ -77,6 +96,8 @@ Support Millions of cells and thousands of columns easy and efficiently for fast
 
 - **Cell Editing**: In-place editing of cell data.
 
+- **Cell Merging**: Merge cells to form groups.
+
 - **Customizations**:
   - Column header template.
   - Row header template.
@@ -90,8 +111,6 @@ Support Millions of cells and thousands of columns easy and efficiently for fast
   - Select.
   - Date.
   - Custom (create extended styles using any template).
-
-- **Drag and Drop**: Easily reorder rows.
 
 - **Range Operations**:
   - Selection.
@@ -113,12 +132,12 @@ Support Millions of cells and thousands of columns easy and efficiently for fast
 
 
 
-### Usage Svelte [Example](https://codesandbox.io/s/data-vue-test-3wkzi?file=/src/App.vue)
+### Usage Svelte
 
 With NPM:
 
 ```bash
-npm i @revolist/svelte-datagrid --save;
+npm i @revolist/svelte-datagrid
 ```
 
 With Yarn:
@@ -130,24 +149,8 @@ yarn add @revolist/svelte-datagrid;
 ```svelte
 // App.svelte
 <script lang="ts">
-  import { RevoGrid } from '@revolist/svelte-datagrid';
-  import type { ColumnRegular } from '@revolist/revogrid';
-
-  // This part to makesure revogrid component is loaded and ready
-  import { defineCustomElements } from '@revolist/revogrid/loader';
-  defineCustomElements();
-
-  const columns = [
-      {
-        prop: 'name',
-        name: 'First',
-      },
-      {
-        prop: 'details',
-        name: 'Second',
-      },
-  ];
-  const source = [
+    import { RevoGrid, type ColumnRegular } from '@revolist/svelte-datagrid';
+    const source = [
     {
       name: '1',
       details: 'Item 1',
@@ -157,53 +160,96 @@ yarn add @revolist/svelte-datagrid;
       details: 'Item 2',
     },
   ];
+    const columns: ColumnRegular[] = [
+    {
+      prop: 'name',
+      name: 'First',
+      cellTemplate(h, { value }) {
+        return h('span', { style: { background: 'red' } }, value);
+      }
+    },
+    {
+      prop: 'details',
+      name: 'Second',
+    },
+  ];
 </script>
 
-<RevoGrid {source} {columns}></RevoGrid>
-
+<main>
+	<RevoGrid {source} {columns}></RevoGrid>
+</main>
 ```
+
+
+[Example and guide](https://rv-grid.com/guide/svelte/)
 
 
 ## Versions
 
 - **2.0+**: Introduced the plugin system, grouping, sorting, and filtering.
-- **3.0+**: Breaking changes introduced. See the [migration guide](./docs/guide/migration.md).
-This version features new component loading, ESM modules, Bootstrap support, and much [more](./docs/guide/migration.md).
-- **4.0+**: Breaking changes introduced. See the [migration guide](./docs/guide/migration.md). In this version, we rethought our framework approach, updated typings, fixed major issues, updated core and significantly improved overall performance. The grid is now much faster, with better plugin support and full framework support for Angular, React, and Vue, along with partial support for Ember and Svelte. Redesigned the documentation, and added more examples.
+- **3.0+**: Breaking changes introduced:
+    -   Removed the redundant viewport component.
+    -   Renamed classes to support Bootstrap and other libraries:
+        -   `row` -> `rgRow`
+        -   `col` -> `rgCol`
+        -   `data-cell` -> `rgCell`
+        -   `data-header-cell` -> `rgHeaderCell`
+    -   Migrated all method names to lowercase to align with modern event naming conventions. For example, `afterEdit` is now `afteredit`. Check the API for details.
+    -   Added support for pure ESM modules to enable the use of the grid in all modern frontend tooling like Vite, Parcel, etc. You can now import custom elements without lazy loading. Note that you are responsible for polyfills.
 
 
+- **4.0+**: Breaking changes introduced. See the [migration guide](https://rv-grid.com/guide/migration). 
 
-## Sponsors
+-   Redesigned type support:
+        - Removed deprecated namespaces:
+            - **Before**: `RevoGrid.ColumnRegular`
+            - **Now**: `ColumnRegular`;
+        - Improved type import:
+            - **Before**: `import { RevoGrid } from '@revolist/revogrid/dist/types/interfaces'`
+            - **Now**: `import { ColumnRegular } from '@revolist/revogrid'`.
+        - Changed viewport type names everywhere. For example, before: `rowDefinitions: [{ type: "row", index: 0, size: 145 }]`, after: `rowDefinitions: [{ type: "rgRow", index: 0, size: 145 }]`.
+    -   Updated [event](https://rv-grid.com/guide/api/revoGrid.html#Events) naming convention. Review your [event](https://rv-grid.com/guide/api/revoGrid.html#Events) usage. [Event names](https://rv-grid.com/guide/api/revoGrid.html#Events) are all lowercase now and are aligned with modern event naming conventions. For example, `afterEdit` -> `afteredit`.
+    - Multiple event breaking changes introduced: beforerowrender now returns `BeforeRowRenderEvent`. Check all events for details.
 
-We would like to extend our heartfelt gratitude to our sponsor for their generous support. Their contributions help us maintain and develop RevoGrid, ensuring continuous improvements and updates. If you are using RevoGrid in your project and would like to support its development, consider becoming a sponsor.
+-   **Major improvements**:
+    -   Rethought the entire framework approach. Introduced Pro version with advance support and pro features.
+    -   Introduced slot support.
+    -   Updated scrolling system for better mobile support.
+    -   Advance template support. Introduced `additionalData` for templates and editors. `Prop` gives access to parent/root app context.
+    -   Redesigned the documentation.
+    -   Fixed major issues and significantly improved overall performance, making the grid multiple time faster.
+    -   Enhanced plugin support - now with full access to grid providers.
+    -   Updated documentation.
+    -   Provided full framework support and native render for  Angular, React, Svelte and Vue.
+ 
+-   **What next?**
+    -   Check our [Roadmap](https://github.com/users/revolist/projects/3)
 
-### Our Sponsors
+
+## Our Sponsors
+
+We would like to extend our heartfelt gratitude to our sponsors for their generous support. Their contributions help us maintain and develop RevoGrid.
 
 [![Altruistiq](https://cdn.prod.website-files.com/62cd69e08130a1a33f5ef900/6310b4d500e971695db5e9c3_615b5db69ce8931a276e5ed2_Social_Icons_AQ_3_32x32.png)](https://altruistiq.com)
 
 
 ### Become a Sponsor
 
-If you or your company would like to support the ongoing development of RevoGrid, please consider becoming a sponsor. Your support will help us continue to improve the project and provide the best possible tool for the community.
-
-[![Sponsor Us](https://img.shields.io/badge/Sponsor%20Us-%F0%9F%92%96-brightgreen)](https://opencollective.com/revogrid)
+If you or your company would like to support the ongoing development of RevoGrid, please consider [![Sponsor Us](https://img.shields.io/badge/Sponsor%20Us-%F0%9F%92%96-brightgreen)](https://opencollective.com/revogrid) or use a [Pro version](https://rv-grid.com/pro/). Your support will help us continue to improve the project and provide the best possible tool for the community.
 
 Thank you for supporting RevoGrid! 🙏
 
+
 ## Contributing
 
-We invite you to join our vibrant community and contribute to the growth and success of RevoGrid. By getting involved, you'll have the opportunity to enhance your skills, gain valuable experience, and make a significant impact on an innovative project.
+By getting involved, you'll have the opportunity to enhance your skills, gain valuable experience, and make a significant impact on an innovative project. Your contribution, no matter how big or small, is valuable.
 
 ### Why Contribute?
 
-- **Expand Your Knowledge**: Working on RevoGrid allows you to dive deep into modern web technologies, improve your coding skills, and learn best practices in performance optimization, data handling, and component-based architecture.
-- **Valuable Experience**: Contributing to an open-source project like RevoGrid provides you with practical experience that can be a great addition to your portfolio. It demonstrates your ability to work collaboratively, solve complex problems, and contribute to a project's success.
-- **Professional Growth**: By contributing, you become part of a network of talented developers. This can lead to mentorship opportunities, collaborations, and professional connections that can benefit your career.
-- **Make a Difference**: Your contributions can help improve RevoGrid, making it more powerful and user-friendly for developers around the world. Your input can shape the future of the project and drive innovation.
+- **Expand Your Knowledge**: Working on complex libraries allows you to dive deep into modern web technologies, improve your coding skills, and learn best practices in performance optimization, data handling, and component-based architecture.
+- **Experience**: Contributing to an open-source project like provides you with practical experience that can be a great addition to your portfolio. It demonstrates your ability to work collaboratively, solve complex problems, and contribute to a project's success.
+- **Professional Growth**: By contributing, you become part of a network of talented developers. This can lead to mentorship opportunities, collaborations, and professional connections that can benefit your career. 
 
-### Join Us
-
-Your contribution, no matter how big or small, is valuable. By working on RevoGrid, you'll be part of an exciting project that's making a difference in the world of data grids. Join us today and let's build something amazing together!
 
 ## License
 
