@@ -194,16 +194,22 @@ This is just a duplicate of `afterfocus` from `revogr-focus.tsx`. */
 To prevent the default behavior of changing the order of `rgRow`, you can call `e.preventDefault()`. */
   roworderchanged: Parameters<JSX.RevoGrid["onRoworderchanged"]>[0]
   
-  /** By sorting.plugin.ts
-Before sorting apply.
-Use e.preventDefault() to prevent sorting data change. */
-  beforesortingapply: Parameters<JSX.RevoGrid["onBeforesortingapply"]>[0]
-  
-  /** By sorting.plugin.ts
-Before sorting event.
-Initial sorting triggered, if this event stops no other event called.
-Use e.preventDefault() to prevent sorting. */
+  /** By `sorting.plugin.ts`
+<br>Triggered immediately after header click.
+<br>First in sorting event sequence. Ff this event stops no other event called.
+<br>Use `e.preventDefault()` to prevent sorting. */
   beforesorting: Parameters<JSX.RevoGrid["onBeforesorting"]>[0]
+  
+  /** By `sorting.plugin.ts`
+<br>Same as `beforesorting` but triggered after `beforeanysource` (when source is changed).
+<br>Use `e.preventDefault()` to prevent sorting data change. */
+  beforesourcesortingapply: Parameters<JSX.RevoGrid["onBeforesourcesortingapply"]>[0]
+  
+  /** By `sorting.plugin.ts`
+<br> After `beforesorting`
+<br>Triggered after column data updated with new sorting order.
+<br>Use `e.preventDefault()` to prevent sorting data change. */
+  beforesortingapply: Parameters<JSX.RevoGrid["onBeforesortingapply"]>[0]
   
   /** This event is triggered when the row order change is started.
 To prevent the default behavior of changing the row order, you can call `e.preventDefault()`.
@@ -590,8 +596,9 @@ export default function RevoGrid($$anchor, $$props) {
 	$.event("beforerange", revo_grid, onEvent);
 	$.event("afterfocus", revo_grid, onEvent);
 	$.event("roworderchanged", revo_grid, onEvent);
-	$.event("beforesortingapply", revo_grid, onEvent);
 	$.event("beforesorting", revo_grid, onEvent);
+	$.event("beforesourcesortingapply", revo_grid, onEvent);
+	$.event("beforesortingapply", revo_grid, onEvent);
 	$.event("rowdragstart", revo_grid, onEvent);
 	$.event("headerclick", revo_grid, onEvent);
 	$.event("beforecellfocus", revo_grid, onEvent);

@@ -126,8 +126,9 @@ const onEvent = (e) => {
   on:beforerange={onEvent}
   on:afterfocus={onEvent}
   on:roworderchanged={onEvent}
-  on:beforesortingapply={onEvent}
   on:beforesorting={onEvent}
+  on:beforesourcesortingapply={onEvent}
+  on:beforesortingapply={onEvent}
   on:rowdragstart={onEvent}
   on:headerclick={onEvent}
   on:beforecellfocus={onEvent}
