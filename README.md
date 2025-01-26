@@ -1,21 +1,6 @@
-### 🚨 Repository Notice
-
-Post new issues [here](https://github.com/revolist/revogrid). Happy coding! 💻
-
----
-
-
-We have updated our latest version to support **Svelte 5** following its official release. 🎉  
-Read more about the announcement here: [Svelte 5 is Alive](https://svelte.dev/blog/svelte-5-is-alive).
-
-If you want to continue using **Svelte 4**, please switch to the [svelte-4](https://github.com/revolist/svelte-datagrid/tree/svelte-4) branch or use version prior to 4.11.0.
-
----
-
-
 <p align="center">
   <a href="https://rv-grid.com">
-    <img src="./assets/logo.svg" alt="RevoGrid Data Grid" height="150" />
+    <img src="./assets/logo.svg" alt="Svelte Data Grid" height="150" />
   </a>
 </p>
 
@@ -28,12 +13,10 @@ If you want to continue using **Svelte 4**, please switch to the [svelte-4](http
   <img src="https://sonarcloud.io/api/project_badges/measure?project=revolist_revogrid&metric=alert_status" alt="Sonar Quality Gate"/>
 </p>
 
-#
 
-<h3 align="center">Powerful data grid component built with <a href="https://stenciljs.com" target="_blank">StencilJS</a>.</h3>
+<h3 align="center">Powerful Svelte Data Grid component built on top of <a href="https://github.com/revolist/revogrid" target="_blank">RevoGrid</a>.</h3>
 <p align="center">
 Support Millions of cells and thousands of columns easy and efficiently for fast data rendering. Easy to use.
-  
 </p>
 
 <p align="center">
@@ -123,6 +106,10 @@ Support Millions of cells and thousands of columns easy and efficiently for fast
   - [Row header template](https://rv-grid.com/guide/row/headers).
   - [Cell properties](https://rv-grid.com/guide/cell/) (define custom properties for rendered cells).
 
+
+> ⚠️ **Note**: Repository Notice: This repo is read-only. Create new issues at the [revogrid repo](https://github.com/revolist/revogrid)
+
+
   - [Cell template](https://rv-grid.com/guide/cell/renderer) (create your own cell views).
   - [Cell editor](https://rv-grid.com/guide/cell/editor) (use predefined or apply your own custom editors and cell types).
 
@@ -180,6 +167,21 @@ yarn add @revolist/svelte-datagrid;
 
 [Example and guide](https://rv-grid.com/guide/svelte/)
 
+
+
+We have updated our latest version to support **Svelte 5** following its official release. 🎉  
+Read more about the announcement here: [Svelte 5 is Alive](https://svelte.dev/blog/svelte-5-is-alive).
+
+If you want to continue using **Svelte 4**, please switch to the [svelte-4](https://github.com/revolist/svelte-datagrid/tree/svelte-4) branch or use version prior to 4.11.0.
+
+---
+
+
+- [![VueJs](./assets/vuejs.svg) Vue 3](https://rv-grid.com/guide/vue3/) and [Vue 2](https://rv-grid.com/guide/vue2/)
+- [![React](./assets/react.svg) React](https://rv-grid.com/guide/react/)
+- [![Angular](./assets/angular.svg) Angular](https://rv-grid.com/guide/angular/)
+- [![Svelte](./assets/svelte.svg) Svelte](https://rv-grid.com/guide/svelte/)
+- [![JavaScript](./assets/js.svg) JavaScript](https://rv-grid.com/guide/)
 
 ## Versions
 
