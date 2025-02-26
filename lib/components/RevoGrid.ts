@@ -156,6 +156,9 @@ Function can be used for performance improvement and additional renders. */
   
   /** Enable accessibility. If disabled, the grid will not be accessible. */
   accessible?: Components.RevoGrid["accessible"]
+  
+  /** Disable native drag&drop plugin. */
+  canDrag?: Components.RevoGrid["canDrag"]
 }
 
 interface RevoGridEvents {
@@ -375,6 +378,7 @@ export default function RevoGrid($$anchor, $$props) {
 	let jobsBeforeRender = $.prop($$props, "jobsBeforeRender", 8, undefined);
 	let registerVNode = $.prop($$props, "registerVNode", 8, undefined);
 	let accessible = $.prop($$props, "accessible", 8, undefined);
+	let canDrag = $.prop($$props, "canDrag", 8, undefined);
 	const refresh = (...args) => $.get(__ref).refresh(...args);
 	const setDataAt = (...args) => $.get(__ref).setDataAt(...args);
 	const scrollToRow = (...args) => $.get(__ref).scrollToRow(...args);
@@ -586,6 +590,7 @@ export default function RevoGrid($$anchor, $$props) {
 		$.set_custom_element_data(revo_grid, "disable-virtual-y", disableVirtualY());
 		$.set_custom_element_data(revo_grid, "hide-attribution", hideAttribution());
 		$.set_custom_element_data(revo_grid, "accessible", accessible());
+		$.set_custom_element_data(revo_grid, "can-drag", canDrag());
 	});
 
 	$.event("contentsizechanged", revo_grid, onEvent);
