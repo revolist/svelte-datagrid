@@ -98,7 +98,8 @@ Or can be filter collection See `FilterCollection` for more info. */
   filter?: Components.RevoGrid["filter"]
   
   /** Alternative way to set sorting.
-`{columns: [{prop: 'name', order: 'asc'}]}` */
+`{columns: [{prop: 'name', order: 'asc'}]}`
+Use SortingPlugin to get current sorting state */
   sorting?: Components.RevoGrid["sorting"]
   
   /** Apply changes typed in editor on editor close except Escape cases.
@@ -197,18 +198,18 @@ This is just a duplicate of `afterfocus` from `revogr-focus.tsx`. */
 To prevent the default behavior of changing the order of `rgRow`, you can call `e.preventDefault()`. */
   roworderchanged: Parameters<JSX.RevoGrid["onRoworderchanged"]>[0]
   
-  /** By `sorting.plugin.ts`
+  /** By `SortingPlugin`
 <br>Triggered immediately after header click.
 <br>First in sorting event sequence. Ff this event stops no other event called.
 <br>Use `e.preventDefault()` to prevent sorting. */
   beforesorting: Parameters<JSX.RevoGrid["onBeforesorting"]>[0]
   
-  /** By `sorting.plugin.ts`
+  /** By `SortingPlugin`
 <br>Same as `beforesorting` but triggered after `beforeanysource` (when source is changed).
 <br>Use `e.preventDefault()` to prevent sorting data change. */
   beforesourcesortingapply: Parameters<JSX.RevoGrid["onBeforesourcesortingapply"]>[0]
   
-  /** By `sorting.plugin.ts`
+  /** By `SortingPlugin`
 <br> After `beforesorting`
 <br>Triggered after column data updated with new sorting order.
 <br>Use `e.preventDefault()` to prevent sorting data change. */
@@ -300,7 +301,8 @@ Useful for modifying or preventing the default row definition behavior. */
   /** Emitted when the filter configuration is changed */
   filterconfigchanged: Parameters<JSX.RevoGrid["onFilterconfigchanged"]>[0]
   
-  /** Emitted when the sorting configuration is changed */
+  /** Emitted when the sorting configuration is changed
+SortingPlugin subsribed to this event */
   sortingconfigchanged: Parameters<JSX.RevoGrid["onSortingconfigchanged"]>[0]
   
   /** Emmited when the row headers are changed. */
