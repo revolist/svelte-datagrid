@@ -87,6 +87,7 @@ $: if (__mounted) setProp('sorting', sorting);
 $: if (__mounted) setProp('focusTemplate', focusTemplate);
 $: if (__mounted) setProp('trimmedRows', trimmedRows);
 $: if (__mounted) setProp('grouping', grouping);
+$: if (__mounted) setProp('additionalData', additionalData);
 $: if (__mounted) setProp('jobsBeforeRender', jobsBeforeRender);
 $: if (__mounted) setProp('registerVNode', registerVNode);
 
@@ -114,7 +115,6 @@ const onEvent = (e) => {
   can-move-columns={canMoveColumns}
   exporting={exporting}
   stretch={stretch}
-  additional-data={additionalData}
   disable-virtual-x={disableVirtualX}
   disable-virtual-y={disableVirtualY}
   hide-attribution={hideAttribution}

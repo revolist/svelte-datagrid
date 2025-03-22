@@ -542,6 +542,16 @@ export default function RevoGrid($$anchor, $$props) {
 	$.legacy_pre_effect(
 		() => (
 			$.get(__mounted),
+			$.deep_read_state(additionalData())
+		),
+		() => {
+			if ($.get(__mounted)) setProp('additionalData', additionalData());
+		}
+	);
+
+	$.legacy_pre_effect(
+		() => (
+			$.get(__mounted),
 			$.deep_read_state(jobsBeforeRender())
 		),
 		() => {
@@ -587,7 +597,6 @@ export default function RevoGrid($$anchor, $$props) {
 		$.set_custom_element_data(revo_grid, "can-move-columns", canMoveColumns());
 		$.set_custom_element_data(revo_grid, "exporting", exporting());
 		$.set_custom_element_data(revo_grid, "stretch", stretch());
-		$.set_custom_element_data(revo_grid, "additional-data", additionalData());
 		$.set_custom_element_data(revo_grid, "disable-virtual-x", disableVirtualX());
 		$.set_custom_element_data(revo_grid, "disable-virtual-y", disableVirtualY());
 		$.set_custom_element_data(revo_grid, "hide-attribution", hideAttribution());
