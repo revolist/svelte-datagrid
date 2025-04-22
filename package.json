@@ -63,13 +63,13 @@
   "homepage": "https://github.com/revolist/revogrid#readme",
   "license": "MIT",
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^5.0.0",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "@tsconfig/svelte": "^5.0.4",
-    "svelte": "^5.2.7",
-    "svelte-check": "^4.1.0",
+    "svelte": "^5.28.2",
+    "svelte-check": "^4.1.6",
     "tslib": "^2.8.1",
     "typescript": "~5.6.2",
-    "vite": "^6.0.1",
+    "vite": "^6.3.2",
     "vite-plugin-dts": "^4.3.0"
   },
   "dependencies": {
