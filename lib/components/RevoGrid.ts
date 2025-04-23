@@ -404,6 +404,7 @@ export default function RevoGrid($$anchor, $$props) {
 	const getContentSize = (...args) => $.get(__ref).getContentSize(...args);
 	const getSelectedRange = (...args) => $.get(__ref).getSelectedRange(...args);
 	const refreshExtraElements = (...args) => $.get(__ref).refreshExtraElements(...args);
+	const getProviders = (...args) => $.get(__ref).getProviders(...args);
 	const getWebComponent = () => $.get(__ref);
 
 	onMount(() => {
@@ -530,6 +531,7 @@ export default function RevoGrid($$anchor, $$props) {
 	$.bind_prop($$props, 'getContentSize', getContentSize);
 	$.bind_prop($$props, 'getSelectedRange', getSelectedRange);
 	$.bind_prop($$props, 'refreshExtraElements', refreshExtraElements);
+	$.bind_prop($$props, 'getProviders', getProviders);
 	$.bind_prop($$props, 'getWebComponent', getWebComponent);
 
 	return $.pop({
@@ -556,6 +558,7 @@ export default function RevoGrid($$anchor, $$props) {
 		getContentSize,
 		getSelectedRange,
 		refreshExtraElements,
+		getProviders,
 		getWebComponent
 	});
 }

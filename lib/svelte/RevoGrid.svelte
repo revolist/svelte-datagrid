@@ -68,6 +68,7 @@ export const getFocused = (...args) => __ref.getFocused(...args);
 export const getContentSize = (...args) => __ref.getContentSize(...args);
 export const getSelectedRange = (...args) => __ref.getSelectedRange(...args);
 export const refreshExtraElements = (...args) => __ref.refreshExtraElements(...args);
+export const getProviders = (...args) => __ref.getProviders(...args);
 
 export const getWebComponent = () => __ref;
 
