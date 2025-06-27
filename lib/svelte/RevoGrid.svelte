@@ -43,6 +43,7 @@ export let hideAttribution = undefined;
 export let jobsBeforeRender = undefined;
 export let registerVNode = undefined;
 export let accessible = undefined;
+export let rtl = undefined;
 export let canDrag = undefined;
 
 export const refresh = (...args) => __ref.refresh(...args);
@@ -121,6 +122,7 @@ const onEvent = (e) => {
   jobs-before-render={jobsBeforeRender}
   register-v-node={registerVNode}
   accessible={accessible}
+  rtl={rtl}
   can-drag={canDrag}
   on:contentsizechanged={onEvent}
   on:beforeedit={onEvent}

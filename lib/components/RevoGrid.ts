@@ -158,6 +158,9 @@ Function can be used for performance improvement and additional renders. */
   /** Enable accessibility. If disabled, the grid will not be accessible. */
   accessible?: Components.RevoGrid["accessible"]
   
+  /** Enable right-to-left (RTL) mode. When enabled, columns will be displayed from right to left. */
+  rtl?: Components.RevoGrid["rtl"]
+  
   /** Disable native drag&drop plugin. */
   canDrag?: Components.RevoGrid["canDrag"]
 }
@@ -380,6 +383,7 @@ export default function RevoGrid($$anchor, $$props) {
 	let jobsBeforeRender = $.prop($$props, 'jobsBeforeRender', 8, undefined);
 	let registerVNode = $.prop($$props, 'registerVNode', 8, undefined);
 	let accessible = $.prop($$props, 'accessible', 8, undefined);
+	let rtl = $.prop($$props, 'rtl', 8, undefined);
 	let canDrag = $.prop($$props, 'canDrag', 8, undefined);
 	const refresh = (...args) => $.get(__ref).refresh(...args);
 	const setDataAt = (...args) => $.get(__ref).setDataAt(...args);
@@ -460,6 +464,7 @@ export default function RevoGrid($$anchor, $$props) {
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'jobs-before-render', jobsBeforeRender()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'register-v-node', registerVNode()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'accessible', accessible()));
+	$.template_effect(() => $.set_custom_element_data(revo_grid, 'rtl', rtl()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'can-drag', canDrag()));
 
 	var node = $.child(revo_grid);
