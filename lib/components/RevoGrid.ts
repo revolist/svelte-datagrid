@@ -339,7 +339,7 @@ import 'svelte/internal/flags/legacy';
 import * as $ from 'svelte/internal/client';
 import { createEventDispatcher, onMount } from 'svelte';
 
-var root = $.template(`<revo-grid><!></revo-grid>`, 2);
+var root = $.from_html(`<revo-grid><!></revo-grid>`, 2);
 
 export default function RevoGrid($$anchor, $$props) {
 	$.push($$props, false);
