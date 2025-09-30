@@ -424,6 +424,34 @@ export default function RevoGrid($$anchor, $$props) {
 		dispatch(e.type, e.detail);
 	};
 
+	var $$exports = {
+		refresh,
+		setDataAt,
+		scrollToRow,
+		scrollToColumnIndex,
+		scrollToColumnProp,
+		updateColumns,
+		addTrimmed,
+		scrollToCoordinate,
+		setCellEdit,
+		setCellsFocus,
+		getSource,
+		getVisibleSource,
+		getSourceStore,
+		getColumnStore,
+		updateColumnSorting,
+		clearSorting,
+		getColumns,
+		clearFocus,
+		getPlugins,
+		getFocused,
+		getContentSize,
+		getSelectedRange,
+		refreshExtraElements,
+		getProviders,
+		getWebComponent
+	};
+
 	$.init();
 
 	var revo_grid = root();
@@ -539,31 +567,5 @@ export default function RevoGrid($$anchor, $$props) {
 	$.bind_prop($$props, 'getProviders', getProviders);
 	$.bind_prop($$props, 'getWebComponent', getWebComponent);
 
-	return $.pop({
-		refresh,
-		setDataAt,
-		scrollToRow,
-		scrollToColumnIndex,
-		scrollToColumnProp,
-		updateColumns,
-		addTrimmed,
-		scrollToCoordinate,
-		setCellEdit,
-		setCellsFocus,
-		getSource,
-		getVisibleSource,
-		getSourceStore,
-		getColumnStore,
-		updateColumnSorting,
-		clearSorting,
-		getColumns,
-		clearFocus,
-		getPlugins,
-		getFocused,
-		getContentSize,
-		getSelectedRange,
-		refreshExtraElements,
-		getProviders,
-		getWebComponent
-	});
+	return $.pop($$exports);
 }
