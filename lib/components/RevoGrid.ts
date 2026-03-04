@@ -345,7 +345,7 @@ export default function RevoGrid($$anchor, $$props) {
 	$.push($$props, false);
 
 	let __ref = $.mutable_source();
-	let __mounted = false;
+	let __mounted = $.mutable_source(false);
 	const dispatch = createEventDispatcher();
 	let rowHeaders = $.prop($$props, 'rowHeaders', 8, undefined);
 	let frameSize = $.prop($$props, 'frameSize', 8, undefined);
@@ -412,7 +412,7 @@ export default function RevoGrid($$anchor, $$props) {
 	const getWebComponent = () => $.get(__ref);
 
 	onMount(() => {
-		__mounted = true;
+		$.set(__mounted, true);
 	});
 
 	const setProp = (prop, value) => {
@@ -423,6 +423,68 @@ export default function RevoGrid($$anchor, $$props) {
 		e.stopPropagation();
 		dispatch(e.type, e.detail);
 	};
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(columns())), () => {
+		if ($.get(__mounted)) setProp('columns', columns());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(source())), () => {
+		if ($.get(__mounted)) setProp('source', source());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(pinnedTopSource())), () => {
+		if ($.get(__mounted)) setProp('pinnedTopSource', pinnedTopSource());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(pinnedBottomSource())), () => {
+		if ($.get(__mounted)) setProp('pinnedBottomSource', pinnedBottomSource());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(rowDefinitions())), () => {
+		if ($.get(__mounted)) setProp('rowDefinitions', rowDefinitions());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(editors())), () => {
+		if ($.get(__mounted)) setProp('editors', editors());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(plugins())), () => {
+		if ($.get(__mounted)) setProp('plugins', plugins());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(columnTypes())), () => {
+		if ($.get(__mounted)) setProp('columnTypes', columnTypes());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(sorting())), () => {
+		if ($.get(__mounted)) setProp('sorting', sorting());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(focusTemplate())), () => {
+		if ($.get(__mounted)) setProp('focusTemplate', focusTemplate());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(trimmedRows())), () => {
+		if ($.get(__mounted)) setProp('trimmedRows', trimmedRows());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(grouping())), () => {
+		if ($.get(__mounted)) setProp('grouping', grouping());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(additionalData())), () => {
+		if ($.get(__mounted)) setProp('additionalData', additionalData());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(jobsBeforeRender())), () => {
+		if ($.get(__mounted)) setProp('jobsBeforeRender', jobsBeforeRender());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(registerVNode())), () => {
+		if ($.get(__mounted)) setProp('registerVNode', registerVNode());
+	});
+
+	$.legacy_pre_effect_reset();
 
 	var $$exports = {
 		refresh,
@@ -465,32 +527,17 @@ export default function RevoGrid($$anchor, $$props) {
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'resize', resize()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'can-focus', canFocus()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'use-clipboard', useClipboard()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'columns', columns()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'source', source()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'pinned-top-source', pinnedTopSource()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'pinned-bottom-source', pinnedBottomSource()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'row-definitions', rowDefinitions()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'editors', editors()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'apply-on-close', applyOnClose()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'plugins', plugins()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'column-types', columnTypes()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'theme', theme()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'row-class', rowClass()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'auto-size-column', autoSizeColumn()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'filter', filter()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'sorting', sorting()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'focus-template', focusTemplate()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'can-move-columns', canMoveColumns()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'trimmed-rows', trimmedRows()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'exporting', exporting()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'grouping', grouping()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'stretch', stretch()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'additional-data', additionalData()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'disable-virtual-x', disableVirtualX()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'disable-virtual-y', disableVirtualY()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'hide-attribution', hideAttribution()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'jobs-before-render', jobsBeforeRender()));
-	$.template_effect(() => $.set_custom_element_data(revo_grid, 'register-v-node', registerVNode()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'accessible', accessible()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'rtl', rtl()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'can-drag', canDrag()));
