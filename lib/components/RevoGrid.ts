@@ -32,6 +32,9 @@ Alternatively you can use `rowSize` to reset viewport */
   /** When true, columns are resizable. */
   resize?: Components.RevoGrid["resize"]
   
+  /** Prevents horizontal scroll state from being mirrored across viewport sections. */
+  noHorizontalScrollTransfer?: Components.RevoGrid["noHorizontalScrollTransfer"]
+  
   /** When true cell focus appear. */
   canFocus?: Components.RevoGrid["canFocus"]
   
@@ -249,6 +252,10 @@ You can override data source here */
 Useful for tracking all changes originating from sources in both the pinned and main viewports. */
   afteranysource: Parameters<JSX.RevoGrid["onAfteranysource"]>[0]
   
+  /** Emitted before user column definitions are gathered into the internal column collection.
+Listeners can replace `detail.columns` to rewrite the raw column set before RevoGrid normalizes it. */
+  beforecolumnsgather: Parameters<JSX.RevoGrid["onBeforecolumnsgather"]>[0]
+  
   /** Emitted before a column update is applied.
 Listeners can use this event to perform any necessary actions or modifications before the column update is finalized. */
   beforecolumnsset: Parameters<JSX.RevoGrid["onBeforecolumnsset"]>[0]
@@ -354,6 +361,7 @@ export default function RevoGrid($$anchor, $$props) {
 	let range = $.prop($$props, 'range', 8, undefined);
 	let readonly = $.prop($$props, 'readonly', 8, undefined);
 	let resize = $.prop($$props, 'resize', 8, undefined);
+	let noHorizontalScrollTransfer = $.prop($$props, 'noHorizontalScrollTransfer', 8, undefined);
 	let canFocus = $.prop($$props, 'canFocus', 8, undefined);
 	let useClipboard = $.prop($$props, 'useClipboard', 8, undefined);
 	let columns = $.prop($$props, 'columns', 8, undefined);
@@ -525,6 +533,7 @@ export default function RevoGrid($$anchor, $$props) {
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'range', range()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'readonly', readonly()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'resize', resize()));
+	$.template_effect(() => $.set_custom_element_data(revo_grid, 'no-horizontal-scroll-transfer', noHorizontalScrollTransfer()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'can-focus', canFocus()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'use-clipboard', useClipboard()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'apply-on-close', applyOnClose()));
@@ -566,6 +575,7 @@ export default function RevoGrid($$anchor, $$props) {
 	$.event('beforeanysource', revo_grid, onEvent);
 	$.event('aftersourceset', revo_grid, onEvent);
 	$.event('afteranysource', revo_grid, onEvent);
+	$.event('beforecolumnsgather', revo_grid, onEvent);
 	$.event('beforecolumnsset', revo_grid, onEvent);
 	$.event('beforecolumnapplied', revo_grid, onEvent);
 	$.event('aftercolumnsset', revo_grid, onEvent);
