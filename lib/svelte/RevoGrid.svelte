@@ -14,6 +14,7 @@ export let colSize = undefined;
 export let range = undefined;
 export let readonly = undefined;
 export let resize = undefined;
+export let noHorizontalScrollTransfer = undefined;
 export let canFocus = undefined;
 export let useClipboard = undefined;
 export let columns = undefined;
@@ -107,6 +108,7 @@ const onEvent = (e) => {
   range={range}
   readonly={readonly}
   resize={resize}
+  no-horizontal-scroll-transfer={noHorizontalScrollTransfer}
   can-focus={canFocus}
   use-clipboard={useClipboard}
   apply-on-close={applyOnClose}
@@ -142,6 +144,7 @@ const onEvent = (e) => {
   on:beforeanysource={onEvent}
   on:aftersourceset={onEvent}
   on:afteranysource={onEvent}
+  on:beforecolumnsgather={onEvent}
   on:beforecolumnsset={onEvent}
   on:beforecolumnapplied={onEvent}
   on:aftercolumnsset={onEvent}
