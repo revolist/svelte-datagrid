@@ -1,5 +1,15 @@
 <script lang="ts">
-  import { RevoGrid, type ColumnRegular } from '@revolist/svelte-datagrid';
+  import {
+    Editor,
+    RevoGrid,
+    Template,
+    type ColumnRegular,
+    type Editors,
+  } from '@revolist/svelte-datagrid';
+  import OperationCell from './OperationCell.svelte';
+  import OperationEditor from './OperationEditor.svelte';
+
+  const OPERATION_EDITOR = 'operation';
 
   // Function to generate column headers
   function generateHeader(index: number): string {
@@ -19,15 +29,18 @@
   // Function to generate fake data
   function generateFakeDataObject(rowsNumber: number, colsNumber: number) {
     const result: any[] = [];
-    const columns: Record<number, ColumnRegular> = {};
-    const totalCells = rowsNumber * colsNumber;
+    const columns: Record<number | string, ColumnRegular> = {};
+    const dataColsNumber = colsNumber - 1;
+    const totalCells = rowsNumber * dataColsNumber;
 
     for (let i = 0; i < totalCells; i++) {
-      const col = i % colsNumber;
-      const row = Math.floor(i / colsNumber);
+      const col = i % dataColsNumber;
+      const row = Math.floor(i / dataColsNumber);
 
       if (!result[row]) {
-        result[row] = {};
+        result[row] = {
+          operation: `Edit ${row}`,
+        };
       }
 
       if (!columns[col]) {
@@ -40,7 +53,17 @@
       result[row][col] = `${row}:${col}`;
     }
 
-    const headers = Object.keys(columns).map(key => columns[parseInt(key, 10)]);
+    columns.operation = {
+      name: 'Operation',
+      prop: 'operation',
+      cellTemplate: Template(OperationCell),
+      editor: OPERATION_EDITOR,
+      autoSize: true,
+      size: 180,
+    };
+
+    const headers = Array.from({ length: dataColsNumber }, (_, index) => columns[index]);
+    headers.push(columns.operation);
     return { source: result, headers };
   }
 
@@ -48,7 +71,10 @@
   const data = generateFakeDataObject(100, 5);
   const source = data.source;
   const columns = data.headers;
+  const editors: Editors = {
+    [OPERATION_EDITOR]: Editor(OperationEditor),
+  };
 </script>
 
 <!-- Render the RevoGrid component -->
-<RevoGrid {source} {columns} />
+<RevoGrid {source} {columns} {editors} />

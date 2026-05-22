@@ -14,6 +14,7 @@ export let colSize = undefined;
 export let range = undefined;
 export let readonly = undefined;
 export let resize = undefined;
+export let noHorizontalScrollTransfer = undefined;
 export let canFocus = undefined;
 export let useClipboard = undefined;
 export let columns = undefined;
@@ -77,7 +78,21 @@ onMount(() => { __mounted = true; });
 
 const setProp = (prop, value) => { if (__ref) __ref[prop] = value; };
 
-
+$: if (__mounted) setProp('columns', columns);
+$: if (__mounted) setProp('source', source);
+$: if (__mounted) setProp('pinnedTopSource', pinnedTopSource);
+$: if (__mounted) setProp('pinnedBottomSource', pinnedBottomSource);
+$: if (__mounted) setProp('rowDefinitions', rowDefinitions);
+$: if (__mounted) setProp('editors', editors);
+$: if (__mounted) setProp('plugins', plugins);
+$: if (__mounted) setProp('columnTypes', columnTypes);
+$: if (__mounted) setProp('sorting', sorting);
+$: if (__mounted) setProp('focusTemplate', focusTemplate);
+$: if (__mounted) setProp('trimmedRows', trimmedRows);
+$: if (__mounted) setProp('grouping', grouping);
+$: if (__mounted) setProp('additionalData', additionalData);
+$: if (__mounted) setProp('jobsBeforeRender', jobsBeforeRender);
+$: if (__mounted) setProp('registerVNode', registerVNode);
 
 const onEvent = (e) => {
   e.stopPropagation();
@@ -93,34 +108,20 @@ const onEvent = (e) => {
   range={range}
   readonly={readonly}
   resize={resize}
+  no-horizontal-scroll-transfer={noHorizontalScrollTransfer}
   can-focus={canFocus}
   use-clipboard={useClipboard}
-  columns={columns}
-  source={source}
-  pinned-top-source={pinnedTopSource}
-  pinned-bottom-source={pinnedBottomSource}
-  row-definitions={rowDefinitions}
-  editors={editors}
   apply-on-close={applyOnClose}
-  plugins={plugins}
-  column-types={columnTypes}
   theme={theme}
   row-class={rowClass}
   auto-size-column={autoSizeColumn}
   filter={filter}
-  sorting={sorting}
-  focus-template={focusTemplate}
   can-move-columns={canMoveColumns}
-  trimmed-rows={trimmedRows}
   exporting={exporting}
-  grouping={grouping}
   stretch={stretch}
-  additional-data={additionalData}
   disable-virtual-x={disableVirtualX}
   disable-virtual-y={disableVirtualY}
   hide-attribution={hideAttribution}
-  jobs-before-render={jobsBeforeRender}
-  register-v-node={registerVNode}
   accessible={accessible}
   rtl={rtl}
   can-drag={canDrag}
@@ -143,6 +144,7 @@ const onEvent = (e) => {
   on:beforeanysource={onEvent}
   on:aftersourceset={onEvent}
   on:afteranysource={onEvent}
+  on:beforecolumnsgather={onEvent}
   on:beforecolumnsset={onEvent}
   on:beforecolumnapplied={onEvent}
   on:aftercolumnsset={onEvent}

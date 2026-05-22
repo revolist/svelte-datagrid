@@ -11,12 +11,21 @@
   <img src="https://badgen.net/bundlephobia/tree-shaking/@revolist/revogrid" alt="Tree shaking"/>
   <img src="https://img.shields.io/bundlephobia/min/@revolist/revogrid" alt="Bundle size"/>
   <img src="https://sonarcloud.io/api/project_badges/measure?project=revolist_revogrid&metric=alert_status" alt="Sonar Quality Gate"/>
+  <a href="https://github.com/revolist/revogrid/actions/workflows/unit.yml">
+        <img src="https://github.com/revolist/revogrid/actions/workflows/unit.yml/badge.svg" alt="Workflow status badge" loading="lazy" height="20">
+  </a>
+  <a href="https://github.com/revolist/revogrid/actions/workflows/e2e.yml">
+        <img src="https://github.com/revolist/revogrid/actions/workflows/e2e.yml/badge.svg" alt="Workflow status badge" loading="lazy" height="20">
+  </a>
 </p>
 
 
 <h3 align="center">Powerful Svelte Data Grid component built on top of <a href="https://github.com/revolist/revogrid" target="_blank">RevoGrid</a>.</h3>
 <p align="center">
 Support Millions of cells and thousands of columns easy and efficiently for fast data rendering. Easy to use.
+</p>
+<p align="center">
+Used by some of the largest companies in Europe and the United States.
 </p>
 
 <p align="center">
@@ -38,6 +47,8 @@ Support Millions of cells and thousands of columns easy and efficiently for fast
 - **High Performance**: Handles millions of cells in the viewport with a powerful core built by default.
 
 - **[Accessibility](https://rv-grid.com/guide/wcag)**: Follows WAI-ARIA best practices.
+
+- **[RTL Support](https://rv-grid.com/guide/rtl)**: Comprehensive Right-to-Left language support for Arabic, Hebrew, Persian, and other RTL languages. Features automatic column reordering, proper text alignment, and layout adjustments for RTL interfaces.
 
 - **[Keyboard Support](https://rv-grid.com/guide/defs#Keyboard)**:
   - Excel-like focus for efficient navigation and editing.
@@ -116,6 +127,8 @@ Support Millions of cells and thousands of columns easy and efficiently for fast
   - Nested grids: Build a grid inside a grid, showcasing advanced editing options and user interactions for a more dynamic data presentation.
   - Context Menu: Build context menus for any grid element - from cells to headers. Cut, copy, paste, add rows, modify columns, and more. Fully customizable with your own actions and behaviors.
 
+- **[AI Agents and MCP](https://rv-grid.com/guide/mcp)**: Connect Codex, Cursor, Claude Code, and VS Code to version-aware RevoGrid docs, examples, migrations, feature availability, and typed API context.
+
 
 > ⚠️ **Note**: Repository Notice: This repo is read-only. Create new issues at the [revogrid repo](https://github.com/revolist/revogrid)
 
@@ -143,18 +156,32 @@ yarn add @revolist/svelte-datagrid;
 ```svelte
 // App.svelte
 <script lang="ts">
-    import { RevoGrid, type ColumnRegular } from '@revolist/svelte-datagrid';
-    const source = [
+  import {
+    Editor,
+    RevoGrid,
+    Template,
+    type ColumnRegular,
+    type Editors,
+  } from '@revolist/svelte-datagrid';
+  import OperationCell from './OperationCell.svelte';
+  import OperationEditor from './OperationEditor.svelte';
+
+  const OPERATION_EDITOR = 'operation';
+
+  const source = [
     {
       name: '1',
       details: 'Item 1',
+      operation: 'Edit',
     },
     {
       name: '2',
       details: 'Item 2',
+      operation: 'Edit',
     },
   ];
-    const columns: ColumnRegular[] = [
+
+  const columns: ColumnRegular[] = [
     {
       prop: 'name',
       name: 'First',
@@ -166,13 +193,27 @@ yarn add @revolist/svelte-datagrid;
       prop: 'details',
       name: 'Second',
     },
+    {
+      prop: 'operation',
+      name: 'Operation',
+      cellTemplate: Template(OperationCell),
+      editor: OPERATION_EDITOR,
+    },
   ];
+
+  const editors: Editors = {
+    [OPERATION_EDITOR]: Editor(OperationEditor),
+  };
 </script>
 
 <main>
-	<RevoGrid {source} {columns}></RevoGrid>
+  <RevoGrid {source} {columns} {editors}></RevoGrid>
 </main>
 ```
+
+`Template(Component)` is the explicit Svelte component bridge for `cellTemplate`.
+Native RevoGrid templates like `cellTemplate(h, props)` still work unchanged.
+Use `Editor(Component)` to register Svelte components as custom editors.
 
 
 [Example and guide](https://rv-grid.com/guide/svelte/)
@@ -247,6 +288,29 @@ We would like to extend our heartfelt gratitude to our sponsors for their genero
 If you or your company would like to support the ongoing development of RevoGrid, please consider [![Sponsor Us](https://img.shields.io/badge/Sponsor%20Us-%F0%9F%92%96-brightgreen)](https://opencollective.com/revogrid) or use a [Pro version](https://rv-grid.com/pro/). Your support will help us continue to improve the project and provide the best possible tool for the community.
 
 Thank you for supporting RevoGrid! 🙏
+
+
+## Testing
+
+[![Unit Tests](https://github.com/revolist/revogrid/actions/workflows/ci-unit.yml/badge.svg?branch=main)](https://github.com/revolist/revogrid/actions/workflows/ci-unit.yml)
+[![E2E Tests](https://github.com/revolist/revogrid/actions/workflows/ci-e2e.yml/badge.svg?branch=main)](https://github.com/revolist/revogrid/actions/workflows/ci-e2e.yml)
+
+RevoGrid is thoroughly tested to ensure reliability and stability.
+
+| Suite | Command | Scope |
+|---|---|---|
+| Unit | `npm run test` | Services, utilities, pure logic |
+| E2E (Playwright) | `npm run test:e2e` | Real browser rendering & interaction |
+
+### E2E Tests
+
+End-to-end tests use [@stencil/playwright](https://www.npmjs.com/package/@stencil/playwright) to run `<revo-grid>` in a real Chromium browser. The dev server starts automatically when you run:
+
+```bash
+npm run test:e2e
+```
+
+Test files live in `e2e/` and share helpers from `e2e/helpers.ts`:
 
 
 ## Contributing
