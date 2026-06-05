@@ -23,7 +23,7 @@ Alternatively you can use `rowSize` to reset viewport */
   /** Indicates default column size. */
   colSize?: Components.RevoGrid["colSize"]
   
-  /** When true, user can range selection. */
+  /** When true, user can select a cell range. Required for range-based clipboard fill. */
   range?: Components.RevoGrid["range"]
   
   /** When true, grid in read only mode. */
@@ -38,7 +38,7 @@ Alternatively you can use `rowSize` to reset viewport */
   /** When true cell focus appear. */
   canFocus?: Components.RevoGrid["canFocus"]
   
-  /** When true enable clipboard. */
+  /** When true enable clipboard. Can be boolean or clipboard config. */
   useClipboard?: Components.RevoGrid["useClipboard"]
   
   /** Columns - defines an array of grid columns.
