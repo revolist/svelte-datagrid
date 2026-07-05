@@ -221,6 +221,11 @@ To prevent the default behavior of changing the order of `rgRow`, you can call `
 <br>Use `e.preventDefault()` to prevent sorting data change. */
   beforesortingapply: Parameters<JSX.RevoGrid["onBeforesortingapply"]>[0]
   
+  /** By `SortingPlugin`
+<br>Triggered after sorting has been applied and completed.
+<br>Provides final sorting state and sorting column metadata when available. */
+  aftersortingapply: Parameters<JSX.RevoGrid["onAftersortingapply"]>[0]
+  
   /** This event is triggered when the row order change is started.
 To prevent the default behavior of changing the row order, you can call `e.preventDefault()`.
 To change the item name at the start of the row order change, you can set `e.text` to the desired new name. */
@@ -567,6 +572,7 @@ export default function RevoGrid($$anchor, $$props) {
 	$.event('beforesorting', revo_grid, onEvent);
 	$.event('beforesourcesortingapply', revo_grid, onEvent);
 	$.event('beforesortingapply', revo_grid, onEvent);
+	$.event('aftersortingapply', revo_grid, onEvent);
 	$.event('rowdragstart', revo_grid, onEvent);
 	$.event('headerclick', revo_grid, onEvent);
 	$.event('beforecellfocus', revo_grid, onEvent);
