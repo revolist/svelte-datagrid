@@ -39,6 +39,7 @@ export let grouping = undefined;
 export let stretch = undefined;
 export let additionalData = undefined;
 export let disableVirtualX = undefined;
+export let virtualX = undefined;
 export let disableVirtualY = undefined;
 export let hideAttribution = undefined;
 export let jobsBeforeRender = undefined;
@@ -91,6 +92,7 @@ $: if (__mounted) setProp('focusTemplate', focusTemplate);
 $: if (__mounted) setProp('trimmedRows', trimmedRows);
 $: if (__mounted) setProp('grouping', grouping);
 $: if (__mounted) setProp('additionalData', additionalData);
+$: if (__mounted) setProp('virtualX', virtualX);
 $: if (__mounted) setProp('jobsBeforeRender', jobsBeforeRender);
 $: if (__mounted) setProp('registerVNode', registerVNode);
 

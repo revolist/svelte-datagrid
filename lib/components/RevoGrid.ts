@@ -138,6 +138,11 @@ Use when not many columns present and you don't need rerenader cells during scro
 Can be used for initial rendering performance improvement. */
   disableVirtualX?: Components.RevoGrid["disableVirtualX"]
   
+  /** Column dimensions that use X axis virtual rendering.
+Defaults to regular columns only to preserve pinned column behavior.
+Set to `['rgCol', 'colPinStart', 'colPinEnd']` to virtualize all column areas. */
+  virtualX?: Components.RevoGrid["virtualX"]
+  
   /** Disable lazy rendering mode for the `Y axis`.
 Use when not many rows present and you don't need rerenader cells during scroll.
 Can be used for initial rendering performance improvement. */
@@ -391,6 +396,7 @@ export default function RevoGrid($$anchor, $$props) {
 	let stretch = $.prop($$props, 'stretch', 8, undefined);
 	let additionalData = $.prop($$props, 'additionalData', 8, undefined);
 	let disableVirtualX = $.prop($$props, 'disableVirtualX', 8, undefined);
+	let virtualX = $.prop($$props, 'virtualX', 8, undefined);
 	let disableVirtualY = $.prop($$props, 'disableVirtualY', 8, undefined);
 	let hideAttribution = $.prop($$props, 'hideAttribution', 8, undefined);
 	let jobsBeforeRender = $.prop($$props, 'jobsBeforeRender', 8, undefined);
@@ -487,6 +493,10 @@ export default function RevoGrid($$anchor, $$props) {
 
 	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(additionalData())), () => {
 		if ($.get(__mounted)) setProp('additionalData', additionalData());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(virtualX())), () => {
+		if ($.get(__mounted)) setProp('virtualX', virtualX());
 	});
 
 	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(jobsBeforeRender())), () => {
