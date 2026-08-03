@@ -82,6 +82,10 @@ Types were made as separate objects to be reusable per multiple columns. */
   /** Theme name. */
   theme?: Components.RevoGrid["theme"]
   
+  /** Per-grid custom theme definitions.
+Assign as a JavaScript property; complex values cannot be serialized as HTML attributes. */
+  themeDefinitions?: Components.RevoGrid["themeDefinitions"]
+  
   /** Row class property mapping.
 Map custom classes to rows from row object data.
 Define this property in rgRow object and this will be mapped as rgRow class. */
@@ -384,6 +388,7 @@ export default function RevoGrid($$anchor, $$props) {
 	let plugins = $.prop($$props, 'plugins', 8, undefined);
 	let columnTypes = $.prop($$props, 'columnTypes', 8, undefined);
 	let theme = $.prop($$props, 'theme', 8, undefined);
+	let themeDefinitions = $.prop($$props, 'themeDefinitions', 8, undefined);
 	let rowClass = $.prop($$props, 'rowClass', 8, undefined);
 	let autoSizeColumn = $.prop($$props, 'autoSizeColumn', 8, undefined);
 	let filter = $.prop($$props, 'filter', 8, undefined);
@@ -473,6 +478,10 @@ export default function RevoGrid($$anchor, $$props) {
 
 	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(columnTypes())), () => {
 		if ($.get(__mounted)) setProp('columnTypes', columnTypes());
+	});
+
+	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(themeDefinitions())), () => {
+		if ($.get(__mounted)) setProp('themeDefinitions', themeDefinitions());
 	});
 
 	$.legacy_pre_effect(() => ($.get(__mounted), $.deep_read_state(sorting())), () => {
