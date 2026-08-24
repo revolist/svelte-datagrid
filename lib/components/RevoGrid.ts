@@ -32,6 +32,10 @@ Alternatively you can use `rowSize` to reset viewport */
   /** When true, columns are resizable. */
   resize?: Components.RevoGrid["resize"]
   
+  /** Enables row resizing. Pass a configuration object to customize the
+height limits or enable resize edges across the full row. */
+  resizeRow?: Components.RevoGrid["resizeRow"]
+  
   /** Prevents horizontal scroll state from being mirrored across viewport sections. */
   noHorizontalScrollTransfer?: Components.RevoGrid["noHorizontalScrollTransfer"]
   
@@ -99,7 +103,7 @@ By default disabled, hence operation is not performance efficient.
 Or define config. See `AutoSizeColumnConfig` for more details. */
   autoSizeColumn?: Components.RevoGrid["autoSizeColumn"]
   
-  /** Enables filter plugin.
+  /** Enables filter plugin. Enabled by default; set to `false` to opt out.
 Can be boolean.
 Or can be filter collection See `FilterCollection` for more info. */
   filter?: Components.RevoGrid["filter"]
@@ -375,6 +379,7 @@ export default function RevoGrid($$anchor, $$props) {
 	let range = $.prop($$props, 'range', 8, undefined);
 	let readonly = $.prop($$props, 'readonly', 8, undefined);
 	let resize = $.prop($$props, 'resize', 8, undefined);
+	let resizeRow = $.prop($$props, 'resizeRow', 8, undefined);
 	let noHorizontalScrollTransfer = $.prop($$props, 'noHorizontalScrollTransfer', 8, undefined);
 	let canFocus = $.prop($$props, 'canFocus', 8, undefined);
 	let useClipboard = $.prop($$props, 'useClipboard', 8, undefined);
@@ -557,6 +562,7 @@ export default function RevoGrid($$anchor, $$props) {
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'range', range()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'readonly', readonly()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'resize', resize()));
+	$.template_effect(() => $.set_custom_element_data(revo_grid, 'resize-row', resizeRow()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'no-horizontal-scroll-transfer', noHorizontalScrollTransfer()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'can-focus', canFocus()));
 	$.template_effect(() => $.set_custom_element_data(revo_grid, 'use-clipboard', useClipboard()));

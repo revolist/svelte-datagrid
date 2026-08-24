@@ -14,6 +14,7 @@ export let colSize = undefined;
 export let range = undefined;
 export let readonly = undefined;
 export let resize = undefined;
+export let resizeRow = undefined;
 export let noHorizontalScrollTransfer = undefined;
 export let canFocus = undefined;
 export let useClipboard = undefined;
@@ -112,6 +113,7 @@ const onEvent = (e) => {
   range={range}
   readonly={readonly}
   resize={resize}
+  resize-row={resizeRow}
   no-horizontal-scroll-transfer={noHorizontalScrollTransfer}
   can-focus={canFocus}
   use-clipboard={useClipboard}
