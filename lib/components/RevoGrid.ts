@@ -286,15 +286,20 @@ Useful for performing actions or modifications before the final application of t
   aftercolumnsset: Parameters<JSX.RevoGrid["onAftercolumnsset"]>[0]
   
   /** Emitted before applying a filter to the data source.
-Use e.preventDefault() to prevent cell focus change.
-Modify if you need to change filters. */
+Use `event.preventDefault()` to handle filtering outside Core. `collection`
+contains the first condition for each column; `filterItems` contains the
+complete multi-condition model. */
   beforefilterapply: Parameters<JSX.RevoGrid["onBeforefilterapply"]>[0]
   
-  /** Emitted before applying a filter to the data source.
-Use e.preventDefault() to prevent the default behavior of trimming values and applying the filter.
-Modify the `collection` property if you want to change the filters.
-Modify the `itemsToFilter` property if you want to filter the indexes for trimming. */
+  /** Emitted before applying filter trim indexes. Use `event.preventDefault()`
+to cancel. `collection` contains the first condition for each column;
+`filterItems` contains the complete model. */
   beforefiltertrimmed: Parameters<JSX.RevoGrid["onBeforefiltertrimmed"]>[0]
+  
+  /** Emitted after the filter trim has been applied. `collection` contains the
+first condition for each column; `filterItems` contains the complete model,
+and `multiFilterItems` is an alias for `filterItems`. */
+  afterfilterapply: Parameters<JSX.RevoGrid["onAfterfilterapply"]>[0]
   
   /** Emitted before trimming values.
 Use e.preventDefault() to prevent the default behavior of trimming values.
@@ -612,6 +617,7 @@ export default function RevoGrid($$anchor, $$props) {
 	$.event('aftercolumnsset', revo_grid, onEvent);
 	$.event('beforefilterapply', revo_grid, onEvent);
 	$.event('beforefiltertrimmed', revo_grid, onEvent);
+	$.event('afterfilterapply', revo_grid, onEvent);
 	$.event('beforetrimmed', revo_grid, onEvent);
 	$.event('aftertrimmed', revo_grid, onEvent);
 	$.event('viewportscroll', revo_grid, onEvent);

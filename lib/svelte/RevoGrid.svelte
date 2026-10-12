@@ -157,6 +157,7 @@ const onEvent = (e) => {
   on:aftercolumnsset={onEvent}
   on:beforefilterapply={onEvent}
   on:beforefiltertrimmed={onEvent}
+  on:afterfilterapply={onEvent}
   on:beforetrimmed={onEvent}
   on:aftertrimmed={onEvent}
   on:viewportscroll={onEvent}
