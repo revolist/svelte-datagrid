@@ -103,7 +103,7 @@ By default disabled, hence operation is not performance efficient.
 Or define config. See `AutoSizeColumnConfig` for more details. */
   autoSizeColumn?: Components.RevoGrid["autoSizeColumn"]
   
-  /** Enables filter plugin. Enabled by default; set to `false` to opt out.
+  /** Enables filter plugin. Disabled by default; set to `true` or a configuration object to enable.
 Can be boolean.
 Or can be filter collection See `FilterCollection` for more info. */
   filter?: Components.RevoGrid["filter"]
