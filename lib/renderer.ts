@@ -82,23 +82,20 @@ export function SvelteTemplateConstructor<T extends Record<string, any>>(
 /**
  * Render a Svelte component in a RevoGrid column cell template.
  */
-export const Template = <TProps extends Record<string, any> = SvelteCellProps>(
+export const Template = <TProps extends Record<string, any> = SvelteCellProps, C = CellTemplateProp | ColumnDataSchemaModel | ColumnTemplateProp>(
   SvelteComponent: Component<TProps>,
   customProps?: Partial<TProps>,
+  options?: { props?: (context: C) => Record<string, any>; key?: (context: C) => string | number },
+  context = getCurrentContext(),
 ) => {
-  const context = getCurrentContext();
 
   return (
     h: HyperFunc<VNode>,
-    p: ColumnDataSchemaModel | ColumnTemplateProp | CellTemplateProp,
+    p: C,
     addition?: any,
   ) => {
-    const props = {
-      ...(customProps ?? {}),
-      ...p,
-      addition,
-    } as unknown as TProps;
-    const key = `${p.prop}-${p.rowIndex || 0}`;
+    const props = (options?.props ? options.props(p) : { ...customProps, ...p, addition }) as TProps;
+    const key = options?.key?.(p) ?? `${(p as any).prop}-${(p as any).rowIndex || 0}`;
     let lastEl: RenderedComponent<TProps> | null = null;
 
     return h('span', {

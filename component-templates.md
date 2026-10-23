@@ -1,28 +1,22 @@
-# Component content templates
+# Framework content templates
 
-Call `useTemplates()` during component initialization. It captures the
-normal Svelte context map and registers owner cleanup. The helper reuses the
-existing `SvelteTemplateConstructor` and reactive-props implementation.
+`useTemplates()` is a thin wrapper around the existing framework `Template` factory. It returns ordinary template callbacks for cells, master rows, Kanban cards, and Gantt labels. There is no outlet or separate mounting protocol.
 
-```svelte
-<script lang="ts">
-  import { useTemplates } from '@revolist/svelte-datagrid';
-  import Card from './Card.svelte';
-  const templates = useTemplates();
-  const cardContent = templates.template<MyCardContext>(Card);
-</script>
+```ts
+import { useTemplates } from '@revolist/svelte-datagrid';
+import type { CellTemplateProp } from '@revolist/revogrid';
+
+const templates = useTemplates();
+const content = templates.template<CellTemplateProp>(MyCell, {
+  props: context => ({ item: context.model }),
+  key: context => context.model.id,
+});
 ```
 
-No outlet is needed. Components receive a `context` prop; optional
-`{ props: context => ({ item: context.card }) }` maps existing props. Updates
-replace props, including deleting omitted props. Context providers should expose
-reactive objects/stores for updates, following normal Svelte semantics.
+Without `props`, the component receives a `context` prop/input. The optional `key` selects record identity when hosts are reused. Supply a stable key for cells whose records may reorder. Mapped props are recomputed when the product invokes the callback, and omitted props are cleared.
 
-Use Core `asCellTemplate(definition, { key: p => p.model.id })` for cells,
-`masterRow.template` for master details, `customization.cardContent` for Kanban,
-and `gantt.visuals.taskBarContent` for Gantt labels. Offscreen content unmounts;
-keep durable state in app data. `dispose()` releases owned instances. Product
-controls and default exports remain unchanged.
+Use the returned callback directly as `column.cellTemplate`, `masterRow.template`, `customization.cardContent`, or `gantt.visuals.taskBarContent`. Product progress, resize, dependency, selection and drag controls remain outside the custom content. The legacy Gantt content hook takes precedence. Exports retain the default product representation.
 
-Existing `Template`, `SvelteTemplateConstructor` and editor APIs remain supported.
-New helpers require the new Core exports; release Core before dependent products.
+Call useTemplates during component initialization. It captures Svelte context and delegates to the existing SvelteTemplateConstructor.
+
+Templates use the existing renderer’s ref cleanup and product caching behavior; `useTemplates` adds no lifecycle management. Existing `Template` and editor signatures remain available; their default cell prop shape is unchanged.
