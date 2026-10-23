@@ -9,3 +9,5 @@ export {
   type SvelteElement,
 } from './renderer';
 export { Editor, type EditorType, SvelteEditorAdapter } from './editor';
+
+export { useTemplates, type SvelteTemplateOwner } from './component-template';

@@ -15,7 +15,8 @@
   },
   "files": [
     "dist/",
-    "lib/"
+    "lib/",
+    "component-templates.md"
   ],
   "scripts": {
     "dev": "vite",
